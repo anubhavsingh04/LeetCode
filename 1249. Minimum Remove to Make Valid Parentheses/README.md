@@ -1,3 +1,5 @@
-1249. Minimum Remove To make Valid Parenthesis\n
-**Medium**
+# 1249. Minimum Remove To make Valid Parenthesis
+
+### Medium
+------------------
 
