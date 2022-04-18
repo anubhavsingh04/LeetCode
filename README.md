@@ -1,2 +1,2 @@
-# LeetCode
-### LeetCode problems
+# [LeetCode](https://leetcode.com/)
+#### LeetCode problems Collection
