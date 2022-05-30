@@ -1,15 +1,17 @@
-class Solution {
-public:
-    void reverseString(vector<char>& s) {
-        if(s.size()==0) return;
-        int n=s.size();
-        char ch=s[n-1];
-        s.pop_back();
-        reverseString(s);
-        s.insert(s.begin(),ch);
-    }
-    
-};
+// // Using recursion (Induction,base case,hypothesis)
+// class Solution {
+// public:
+//     void reverseString(vector<char>& s) {
+//         if(s.size()==0) return;     // base case
+//         char ch=s[s.size()-1];
+//         s.pop_back();
+//         reverseString(s); 
+// // above codn is hypothesis we will assume that it will give sorted string like=> l l e h o
+//         s.insert(s.begin(),ch);  // induction
+//     } 
+// };
+
+// Two pointer 
 
 // class Solution {
 // public:
@@ -26,3 +28,21 @@ public:
 //         }
 //     }
 // };
+
+// Stack
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        stack<char>st;
+        for(auto &i:s)
+        {
+            st.push(i);
+        }
+        s.clear();
+        while(!st.empty())
+        {
+            s.push_back(st.top()); st.pop();
+        }
+    }
+};
