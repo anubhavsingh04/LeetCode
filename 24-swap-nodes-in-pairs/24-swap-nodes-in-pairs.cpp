@@ -8,12 +8,17 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// Recursion works like magic 
 
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         if(!head||!head->next) return head;
         ListNode*tmp=head->next;
+        // hypothesis hamari ye hai ki agr ham chote input (3->4) pe apply
+        // krenge to ye recursive function hame (4->3) lake de dega 
+        // ab bas induction step me hame 1 yani head ki link change krke 4 pe point krana h
+        // and tmp ki link ko 1 pe krni hai finally head node temp ho jayega 
         head->next=swapPairs(head->next->next);
         tmp->next=head;
         return tmp;
