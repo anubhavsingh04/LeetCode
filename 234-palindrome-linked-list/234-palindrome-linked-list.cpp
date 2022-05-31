@@ -8,35 +8,59 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        ListNode *slow=head,*fast=head,*prev,*tmp;
-        while(fast&&fast->next)
+        stack<int>st;
+        ListNode*curr=head,*tmp=head;
+        while(curr)
         {
-            slow=slow->next;
-            fast=fast->next->next;
+            st.push(curr->val);
+            curr=curr->next;
         }
-        prev=slow;
-        slow=slow->next;
-        prev->next=NULL;
-        // reverse half of list
-        while(slow)
+        while(tmp)
         {
-            tmp=slow->next;
-            slow->next=prev;
-            prev=slow;
-            slow=tmp;
+            if(tmp->val!=st.top()) return false;
+            st.pop();
+            tmp=tmp->next;
         }
-        fast=head; slow=prev; // since slow will be pointing at last node 
-        while(slow)
-        {
-            if(slow->val!=fast->val) return false ;
-            slow=slow->next; fast=fast->next;
-        }
-        return true ;
+        return true;
     }
 };
+
+
+// class Solution {
+// public:
+//     bool isPalindrome(ListNode* head) {
+//         ListNode *slow=head,*fast=head,*prev,*tmp;
+//         while(fast&&fast->next)
+//         {
+//             slow=slow->next;
+//             fast=fast->next->next;
+//         }
+//         prev=slow;
+//         slow=slow->next;
+//         prev->next=NULL;
+//         // reverse half of list
+//         while(slow)
+//         {
+//             tmp=slow->next;
+//             slow->next=prev;
+//             prev=slow;
+//             slow=tmp;
+//         }
+//         fast=head; slow=prev; // since prev will be pointing at last node 
+//         while(slow)
+//         {
+//             if(slow->val!=fast->val) return false ;
+//             slow=slow->next; fast=fast->next;
+//         }
+//         return true ;
+//     }
+// };
+
+// More efficient 
 
 // class Solution {
 // public:
