@@ -11,20 +11,50 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        stack<int>st;
-        queue<int>q;
-        ListNode*curr=head;
-        while(curr!=NULL)
+        ListNode *slow=head,*fast=head,*prev,*tmp;
+        while(fast&&fast->next)
         {
-             st.push(curr->val); q.push(curr->val); curr=curr->next;
+            slow=slow->next;
+            fast=fast->next->next;
         }
-           
-        while(!st.empty() && !q.empty())
+        prev=slow;
+        slow=slow->next;
+        prev->next=NULL;
+        // reverse half of list
+        while(slow)
         {
-            if(st.top()!=q.front()) return false ;
-            st.pop();
-            q.pop();
+            tmp=slow->next;
+            slow->next=prev;
+            prev=slow;
+            slow=tmp;
         }
-        return true;
+        fast=head; slow=prev; // since slow will be pointing at last node 
+        while(slow)
+        {
+            if(slow->val!=fast->val) return false ;
+            slow=slow->next; fast=fast->next;
+        }
+        return true ;
     }
 };
+
+// class Solution {
+// public:
+//     bool isPalindrome(ListNode* head) {
+//         stack<int>st;
+//         queue<int>q;
+//         ListNode*curr=head;
+//         while(curr!=NULL)
+//         {
+//              st.push(curr->val); q.push(curr->val); curr=curr->next;
+//         }
+           
+//         while(!st.empty() && !q.empty())
+//         {
+//             if(st.top()!=q.front()) return false ;
+//             st.pop();
+//             q.pop();
+//         }
+//         return true;
+//     }
+// };
