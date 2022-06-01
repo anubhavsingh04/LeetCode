@@ -1,3 +1,16 @@
+class Solution {
+public:
+    // if n%3==0 || n%3==1 then only n can be expressed as power of 2 
+    bool checkPowersOfThree(int n) {
+        while(n)
+        {
+            if(n%3==2) return false;
+            n/=3;
+        }
+        return true;
+    }
+};
+
 // class Solution {
 // public:
 //     // if n%3==0 || n%3==1 then only n can be expressed as power of 2 
@@ -22,16 +35,3 @@
 //         return true;
 //     }
 // };
-
-class Solution {
-public:
-    // if n%3==0 || n%3==1 then only n can be expressed as power of 2 
-    bool checkPowersOfThree(int n) {
-        while(n)
-        {
-            if(n%3==2) return false;
-            n/=3;
-        }
-        return true;
-    }
-};
