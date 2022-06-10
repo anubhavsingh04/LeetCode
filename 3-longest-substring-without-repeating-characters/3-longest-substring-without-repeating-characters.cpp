@@ -1,9 +1,20 @@
-// class Solution {
-// public:
-//     int lengthOfLongestSubstring(string s) {
-        
-//     }
-// };
+// o(n)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n=s.size(),i=0,j=0,ans=0;
+        map<char,int>m;
+       
+        while(j<n){
+            if(m.find(s[j])!=m.end()&&m[s[j]]>=i)
+                i=m[s[j]]+1;
+            m[s[j]]=j;
+            ans=max(ans,j-i+1);
+            j++;
+        }
+        return ans;
+    }
+};
 
 // class Solution {
 // public:
@@ -19,25 +30,27 @@
 //     }
 // };
 
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int n=s.size();
-        set<char>st;
-        int i=0,j=0;
-        int len=0;
-        while(j<n)
-        {
-            if(st.count(s[j])==0){
-                st.insert(s[j]);
-                len=max(len,j-i+1);
-                j++;
-            }
-            else {
-                st.erase(s[i]);
-                i++;
-            }
-        }
-        return len;
-    }
-};
+// sliding window o(n^2)
+
+// class Solution {
+// public:
+//     int lengthOfLongestSubstring(string s) {
+//         int n=s.size();
+//         set<char>st;
+//         int i=0,j=0;
+//         int len=0;
+//         while(j<n)
+//         {
+//             if(st.count(s[j])==0){
+//                 st.insert(s[j]);
+//                 len=max(len,j-i+1);
+//                 j++;
+//             }
+//             else {
+//                 st.erase(s[i]);
+//                 i++;
+//             }
+//         }
+//         return len;
+//     }
+// };
