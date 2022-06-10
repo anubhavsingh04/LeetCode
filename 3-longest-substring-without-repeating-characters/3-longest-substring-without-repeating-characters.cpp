@@ -3,7 +3,7 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int n=s.size(),i=0,j=0,ans=0;
-        map<char,int>m;
+        unordered_map<char,int>m;
        
         while(j<n){
             if(m.find(s[j])!=m.end()&&m[s[j]]>=i)
