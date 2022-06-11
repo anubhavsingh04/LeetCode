@@ -1,3 +1,9 @@
+// Here ans is the window size we have to maximize the window size
+// because more we maximize window size lesser the elements willl be remainig in nums
+// ans hence our no of operation will be reduced
+// Here we are checking for window of max size for sum=totalsum-x 
+//so that sum of remainig  elements becomes x 
+
 class Solution {
 public:
     int minOperations(vector<int>& nums, int x) {
