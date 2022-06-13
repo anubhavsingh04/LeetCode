@@ -14,28 +14,37 @@ class Solution {
 public:
     int countNodes(TreeNode* root) {
         if (!root) return 0;
-        int lh=leftheight(root->left);
-        int rh=rightheight(root->right);
+        // int lh=leftheight(root->left);
+        // int rh=rightheight(root->right);
+        int lh=height(root->left);
+        int rh=height(root->right);
         return 1+countNodes(root->left)+countNodes(root->right);
     }
     
-    int leftheight(TreeNode*root)
+    // int leftheight(TreeNode*root)
+    // {
+    //     int x=1;
+    //     while(root){
+    //         x++;
+    //       root=root->left;
+    //     }
+    //     return x;
+    // }
+    // int rightheight(TreeNode*root)
+    // {
+    //     int x=1;
+    //     while(root){
+    //         x++;
+    //         root=root->right;
+    //     }
+    //     return x;
+    // }
+    int height(TreeNode*root)
     {
-        int x=1;
-        while(root){
-            x++;
-          root=root->left;
-        }
-        return x;
-    }
-    int rightheight(TreeNode*root)
-    {
-        int x=1;
-        while(root){
-            x++;
-            root=root->right;
-        }
-        return x;
+        if(!root) return 0;
+        int lh=height(root->left);
+        int rh=height(root->right);
+        return 1+max(lh,rh);
     }
 };
 
