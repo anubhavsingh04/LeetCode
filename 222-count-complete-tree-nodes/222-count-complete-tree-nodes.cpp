@@ -13,19 +13,9 @@ class Solution {
 public:
     int countNodes(TreeNode* root) {
         if (!root) return 0;
-        int lh=height(root->left);
-        int rh=height(root->right);
         return 1+countNodes(root->left)+countNodes(root->right);
     }
-    int height(TreeNode*root)
-    {
-        if(!root) return 0;
-        int lh=height(root->left);
-        int rh=height(root->right);
-        return 1+max(lh,rh);
-    }
 };
-
 
 // class Solution {
 // public:
@@ -70,5 +60,22 @@ public:
         
 //         if (l == r) return pow(2, l) - 1;
 //         return 1 + countNodes(root->left) + countNodes(root->right);
+//     }
+// };
+
+// class Solution {
+// public:
+//     int countNodes(TreeNode* root) {
+//         if (!root) return 0;
+//         int lh=height(root->left);
+//         int rh=height(root->right);
+//         return 1+countNodes(root->left)+countNodes(root->right);
+//     }
+//     int height(TreeNode*root)
+//     {
+//         if(!root) return 0;
+//         int lh=height(root->left);
+//         int rh=height(root->right);
+//         return 1+max(lh,rh);
 //     }
 // };
