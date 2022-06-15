@@ -10,64 +10,64 @@
  * };
  */
 
-// class Solution {
-// public:
-//      TreeNode* solve(vector<int>&preorder,vector<int>&inorder,int instart,
-//                      int inend,int &preindex,map<int,int>m)
-//      {
-//          if(instart>inend)
-//              return NULL;
-//          TreeNode*root=new TreeNode(preorder[preindex++]);
-//          int pos=m[root->val];
-//          root->left=solve(preorder,inorder,instart,pos-1,preindex,m);
-//          root->right=solve(preorder,inorder,pos+1,inend,preindex,m);
-//          return root;
-//      }
-//     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-//         map<int,int>m;
-//         for(int i=0;i<inorder.size();i++)
-//         {
-//             m[inorder[i]]=i;
-//         }
-//         int preindex=0;
-//         return solve(preorder,inorder,0,inorder.size()-1,preindex,m);
-//     }
-    
-// };
-
-
 class Solution {
 public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        unordered_map<int, int> inorderMap;
-        for (int i = 0; i < inorder.size(); i++){
-            inorderMap[inorder[i]] = i;
+     TreeNode* solve(vector<int>&preorder,vector<int>&inorder,int instart,
+                     int inend,int &preindex,unordered_map<int,int>&m)
+     {
+         if(instart>inend)
+             return NULL;
+         TreeNode*root=new TreeNode(preorder[preindex++]);
+         int pos=m[root->val];
+         root->left=solve(preorder,inorder,instart,pos-1,preindex,m);
+         root->right=solve(preorder,inorder,pos+1,inend,preindex,m);
+         return root;
+     }
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+        unordered_map<int,int>m;
+        for(int i=0;i<inorder.size();i++)
+        {
+            m[inorder[i]]=i;
         }
-        int pIdx = 0;
-        return buildTreeRec(preorder, pIdx,
-                            inorderMap, 0, inorder.size()-1);
+        int preindex=0;
+        return solve(preorder,inorder,0,inorder.size()-1,preindex,m);
     }
     
-    TreeNode* buildTreeRec(vector<int>& preorder, int& pIdx,
-                           unordered_map<int, int>& inorderMap, int iLeftIdx, int iRightIdx){
-        
-        if (iLeftIdx > iRightIdx){
-            pIdx--;
-            return nullptr;
-        }
-        
-        TreeNode* rootNodePtr = new TreeNode(preorder[pIdx]);
-        
-        int iRootIdx = inorderMap[preorder[pIdx]];
-        pIdx++;
-        rootNodePtr->left = buildTreeRec(preorder, pIdx, 
-                                         inorderMap, iLeftIdx, iRootIdx-1);
-        pIdx++;
-        rootNodePtr->right = buildTreeRec(preorder, pIdx,
-                                          inorderMap, iRootIdx+1, iRightIdx);
-        return rootNodePtr;
-    }
 };
+
+
+// class Solution {
+// public:
+//     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+//         unordered_map<int, int> inorderMap;
+//         for (int i = 0; i < inorder.size(); i++){
+//             inorderMap[inorder[i]] = i;
+//         }
+//         int pIdx = 0;
+//         return buildTreeRec(preorder, pIdx,
+//                             inorderMap, 0, inorder.size()-1);
+//     }
+    
+//     TreeNode* buildTreeRec(vector<int>& preorder, int& pIdx,
+//                            unordered_map<int, int>& inorderMap, int iLeftIdx, int iRightIdx){
+        
+//         if (iLeftIdx > iRightIdx){
+//             pIdx--;
+//             return nullptr;
+//         }
+        
+//         TreeNode* rootNodePtr = new TreeNode(preorder[pIdx]);
+        
+//         int iRootIdx = inorderMap[preorder[pIdx]];
+//         pIdx++;
+//         rootNodePtr->left = buildTreeRec(preorder, pIdx, 
+//                                          inorderMap, iLeftIdx, iRootIdx-1);
+//         pIdx++;
+//         rootNodePtr->right = buildTreeRec(preorder, pIdx,
+//                                           inorderMap, iRootIdx+1, iRightIdx);
+//         return rootNodePtr;
+//     }
+// };
 
 
 
