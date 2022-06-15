@@ -10,6 +10,44 @@
  * };
  */
 
+
+// left ke liye inorder instart sestart hoga aur pos-1 tak chalega
+// right ke liye inorder pos+1 se start hoga aur inend tak jayega
+// left ke liye preorder prestart+1 se start hoga aur prestart=numleft tak jayega 
+// (numleft=left me kitne no haii)
+// right ke liye preorder prestart+numsleft+1 se leke preend tak jayega
+
+
+class Solution {
+public:
+    TreeNode* solve(vector<int>&inorder,int instart,int inend,
+                    vector<int>&preorder,int prestart,int preend,unordered_map<int,int>&inMap)
+    {
+        if(instart>inend||prestart>preend)
+            return nullptr;
+        
+        TreeNode*root=new TreeNode(preorder[prestart]);
+        int pos=inMap[root->val]; // this position indicates root ki val inorder me kaha lie kr rhi h
+        int numleft=pos-instart;
+        root->left=solve(inorder,instart,pos-1,preorder,prestart+1,prestart+numleft,inMap);
+        root->right=solve(inorder,pos+1,inend,preorder,prestart+numleft+1,preend,inMap);
+        return root;
+    }
+        
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+        unordered_map<int,int>inMap;
+        for(int i=0;i<inorder.size();i++)
+        {
+            inMap[inorder[i]]=i;
+        }
+        return solve(inorder,0,inorder.size()-1,preorder,0,preorder.size()-1,inMap);
+    }
+    
+};
+
+
+
+
 // class Solution {
 // public:
 //      TreeNode* solve(vector<int>&preorder,vector<int>&inorder,int instart,
@@ -36,38 +74,7 @@
 // };
 
 
-// class Solution {
-// public:
-//     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-//         unordered_map<int, int> inorderMap;
-//         for (int i = 0; i < inorder.size(); i++){
-//             inorderMap[inorder[i]] = i;
-//         }
-//         int pIdx = 0;
-//         return buildTreeRec(preorder, pIdx,
-//                             inorderMap, 0, inorder.size()-1);
-//     }
-    
-//     TreeNode* buildTreeRec(vector<int>& preorder, int& pIdx,
-//                            unordered_map<int, int>& inorderMap, int iLeftIdx, int iRightIdx){
-        
-//         if (iLeftIdx > iRightIdx){
-//             pIdx--;
-//             return nullptr;
-//         }
-        
-//         TreeNode* rootNodePtr = new TreeNode(preorder[pIdx]);
-        
-//         int iRootIdx = inorderMap[preorder[pIdx]];
-//         pIdx++;
-//         rootNodePtr->left = buildTreeRec(preorder, pIdx, 
-//                                          inorderMap, iLeftIdx, iRootIdx-1);
-//         pIdx++;
-//         rootNodePtr->right = buildTreeRec(preorder, pIdx,
-//                                           inorderMap, iRootIdx+1, iRightIdx);
-//         return rootNodePtr;
-//     }
-// };
+
 
 
 
@@ -130,34 +137,3 @@
 //         return node;
 //     }
 // };
-
-
-
-
-
-class Solution {
-public:
-    TreeNode* solve(vector<int>&inorder,int instart,int inend,
-                    vector<int>&preorder,int prestart,int preend,map<int,int>&inMap)
-    {
-        if(instart>inend||prestart>preend)
-            return nullptr;
-        
-        TreeNode*root=new TreeNode(preorder[prestart]);
-        int pos=inMap[root->val]; // this position indicates root ki val inorder me kaha lie kr rhi h
-        int numleft=pos-instart;
-        root->left=solve(inorder,instart,pos-1,preorder,prestart+1,prestart+numleft,inMap);
-        root->right=solve(inorder,pos+1,inend,preorder,prestart+numleft+1,preend,inMap);
-        return root;
-    }
-        
-    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-        map<int,int>inMap;
-        for(int i=0;i<inorder.size();i++)
-        {
-            inMap[inorder[i]]=i;
-        }
-        return solve(inorder,0,inorder.size()-1,preorder,0,preorder.size()-1,inMap);
-    }
-    
-};
