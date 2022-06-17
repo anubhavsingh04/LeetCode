@@ -9,6 +9,22 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// Using recursion right left then modify the root
+
+class Solution {
+public:
+    TreeNode*root=root,*prev=NULL;
+    void flatten(TreeNode* root) {
+        if(!root) return;
+        flatten(root->right);
+        flatten(root->left);
+        root->right=prev;
+        root->left=NULL;
+        prev=root; // when we backtrack then we will se values will be assigned as asked 
+    }
+};
+
+
 
 // using stack TC: O(n) SC: O(n)
 
@@ -33,24 +49,29 @@
 //     }
 // };
 
+
+
+
+
+
 // using morris traversal TC: O(n) space: O(1)
 
-class Solution {
-public:
-    void flatten(TreeNode* root) {
-        TreeNode*curr=root;
-        while(curr!=NULL)
-        {
-            if(curr->left)
-            {
-                TreeNode*prev=curr->left;
-                while(prev->right)
-                    prev=prev->right;
-                prev->right=curr->right;
-                curr->right=curr->left;
-                curr->left=NULL;
-            }
-            curr=curr->right;
-        }
-    }
-};
+// class Solution {
+// public:
+//     void flatten(TreeNode* root) {
+//         TreeNode*curr=root;
+//         while(curr!=NULL)
+//         {
+//             if(curr->left)
+//             {
+//                 TreeNode*prev=curr->left;
+//                 while(prev->right)
+//                     prev=prev->right;
+//                 prev->right=curr->right;
+//                 curr->right=curr->left;
+//                 curr->left=NULL;
+//             }
+//             curr=curr->right;
+//         }
+//     }
+// };
