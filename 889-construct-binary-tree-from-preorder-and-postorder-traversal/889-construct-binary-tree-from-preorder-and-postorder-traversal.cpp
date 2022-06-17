@@ -20,7 +20,7 @@ public:
         TreeNode*root=new TreeNode(preorder[prestart]);
         if(prestart==preend)
             return root;
-        int pos=m[preorder[prestart+1]]; // postorder me root ki val kaun se index pe hai
+        int pos=m[preorder[prestart+1]]; // postorder me root ke agle element ka index 
         int numleft=pos-poststart+1;
         root->left=solve(preorder,prestart+1,prestart+numleft,postorder,poststart,pos);
         root->right=solve(preorder,prestart+numleft+1,preend,postorder,pos+1,postend-1);
