@@ -7,74 +7,119 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// class Codec {
+// public:
+
+//     // Encodes a tree to a single string.
+//     string serialize(TreeNode* root) {
+//         string s="";
+//         if(!root) return s;
+//         queue<TreeNode*>q;
+//         q.push(root);
+//         while(!q.empty())
+//         {
+//             TreeNode*curr=q.front();
+//             q.pop();
+//             if(curr==NULL)
+//             {
+//                 s+="#,";
+//             }
+//             else {
+//                 s+=(to_string(curr->val)+',');
+//             }
+//             if(curr!=NULL)
+//             {
+//                 q.push(curr->left);
+//                 q.push(curr->right);
+//             }
+//         }
+//         return s;
+//     }
+
+//     // Decodes your encoded data to tree.
+//     TreeNode* deserialize(string data) {
+//         if(data.size()==0) return NULL;
+        
+//         stringstream s(data);
+//         string str;
+//         getline(s,str,',');
+        
+//         TreeNode*root=new TreeNode(stoi(str));
+//         queue<TreeNode*>q;
+//         q.push(root);
+        
+//         while(!q.empty())
+//         {
+//             TreeNode*curr=q.front();
+//             q.pop();
+//             getline(s,str,',');
+//             if(str=="#")
+//             {
+//                 curr->left=NULL;
+//             }
+//             else
+//             {
+//                 TreeNode*leftnode=new TreeNode(stoi(str));
+//                 curr->left=leftnode;
+//                 q.push(leftnode);
+//             }
+//             getline(s,str,',');
+//             if(str=="#")
+//             {
+//                 curr->right=NULL;
+//             }
+//             else {
+//                 TreeNode*rightnode=new TreeNode(stoi(str));
+//                 curr->right=rightnode;
+//                 q.push(rightnode);
+//             }
+//         }
+//         return root;
+//     }
+// };
+
+
+
+
+
+
 class Codec {
 public:
-
+    TreeNode* maketree(queue<string>&q)
+    {
+        string s=q.front();
+        q.pop();
+        if(s=="null")
+            return NULL;
+        
+        TreeNode* root=new TreeNode(stoi(s));
+        root->left=maketree(q);
+        root->right=maketree(q);
+        return root;
+    }
     // Encodes a tree to a single string.
+    
     string serialize(TreeNode* root) {
-        string s="";
-        if(!root) return s;
-        queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty())
-        {
-            TreeNode*curr=q.front();
-            q.pop();
-            if(curr==NULL)
-            {
-                s+="#,";
-            }
-            else {
-                s+=(to_string(curr->val)+',');
-            }
-            if(curr!=NULL)
-            {
-                q.push(curr->left);
-                q.push(curr->right);
-            }
-        }
-        return s;
+        if(!root) return "null,";
+        return to_string(root->val)+","+ serialize(root->left) + serialize(root->right);
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        if(data.size()==0) return NULL;
-        
-        stringstream s(data);
-        string str;
-        getline(s,str,',');
-        
-        TreeNode*root=new TreeNode(stoi(str));
-        queue<TreeNode*>q;
-        q.push(root);
-        
-        while(!q.empty())
+        string s;
+        queue<string>q;
+        for(int i=0;i<data.size();i++)
         {
-            TreeNode*curr=q.front();
-            q.pop();
-            getline(s,str,',');
-            if(str=="#")
+            if(data[i]==',')
             {
-                curr->left=NULL;
+                q.push(s);
+                s="";
+                continue;
             }
-            else
-            {
-                TreeNode*leftnode=new TreeNode(stoi(str));
-                curr->left=leftnode;
-                q.push(leftnode);
-            }
-            getline(s,str,',');
-            if(str=="#")
-            {
-                curr->right=NULL;
-            }
-            else {
-                TreeNode*rightnode=new TreeNode(stoi(str));
-                curr->right=rightnode;
-                q.push(rightnode);
-            }
+            s+=data[i];
         }
-        return root;
+        // if(s.size()!=0) q.push(s);
+        return maketree(q);
     }
 };
 
