@@ -9,23 +9,69 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// class Solution {
+//     vector<int>v;
+// public:
+//     void inorder(TreeNode*root)
+//     {
+//         if(root==NULL)
+//             return ;
+//          inorder(root->left);
+//         v.push_back(root->val);
+//         inorder(root->right);
+//     }
+//     vector<int> inorderTraversal(TreeNode* root) {
+//         inorder(root);
+//         return v;
+//     }
+// };
+
+
+
+// Morris traversal (threaded binary tree)
+
+
 class Solution {
     vector<int>v;
 public:
-    void inorder(TreeNode*root)
-    {
-        if(root==NULL)
-            return ;
-         inorder(root->left);
-        v.push_back(root->val);
-        inorder(root->right);
-    }
     vector<int> inorderTraversal(TreeNode* root) {
-        inorder(root);
-        return v;
+        vector<int>ans;
+        TreeNode*curr=root;
+        while(curr!=NULL)
+        {
+            if(curr->left==NULL)
+            {
+                ans.push_back(curr->val);
+                curr=curr->right;
+            }
+            else 
+            {
+                TreeNode*prev=curr->left;
+                while(prev->right&&prev->right!=curr)
+                {
+                    prev=prev->right;
+                }
+                if(prev->right==NULL)
+                {
+                    prev->right=curr;
+                    curr=curr->left;
+                }
+                else // prev ka right agr curr ke equal ho gya ho 
+                {
+                    prev->right=NULL;
+                    ans.push_back(curr->val);
+                    curr=curr->right;
+                }
+            }
+        }
+        return ans;
     }
 };
+    
+    
+    
 
+    
 // Iterative inorder traversal 
 
 // class Solution {
