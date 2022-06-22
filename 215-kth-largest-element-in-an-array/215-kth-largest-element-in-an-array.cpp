@@ -1,4 +1,4 @@
-// Kth largest element is (n-k)th smallest 
+// Kth largest element is (n-k+1)th smallest 
 
 class Solution {
 public:
