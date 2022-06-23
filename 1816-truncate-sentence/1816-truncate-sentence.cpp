@@ -1,31 +1,31 @@
-// class Solution {
-// public:
-//     string truncateSentence(string s, int k) {
-//         string ans;
-//         for(int i=0;i<s.size();i++)
-//         {
-//             if(s[i]==' ')
-//             {
-//                 k--;
-//                 if(k==0) 
-//                     break;
-//             }
-//             ans+=s[i];
-//         }
-//         return ans;
-//     }
-// };
-
-
-
 class Solution {
 public:
     string truncateSentence(string s, int k) {
+        string ans;
         for(int i=0;i<s.size();i++)
         {
-            if(s[i]==' ' && --k==0)
-                return s.substr(0,i);
+            if(s[i]==' ')
+            {
+                k--;
+                if(k==0) 
+                    break;
+            }
+            ans+=s[i];
         }
-        return s;
+        return ans;
     }
 };
+
+
+
+// class Solution {
+// public:
+//     string truncateSentence(string s, int k) {
+//         for(int i=0;i<s.size();i++)
+//         {
+//             if(s[i]==' ' && --k==0)
+//                 return s.substr(0,i);
+//         }
+//         return s;
+//     }
+// };
