@@ -20,7 +20,8 @@
 // TC: O(n^2) Sc: O(m)
 
 
-// Hashing force 
+// Hashing Soln
+
 class Solution {
 public:
     int countPairs(vector<int>& nums, int k) {
