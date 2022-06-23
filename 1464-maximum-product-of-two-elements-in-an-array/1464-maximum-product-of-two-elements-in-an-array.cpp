@@ -1,38 +1,38 @@
-// class Solution {
-// public:
-//     int maxProduct(vector<int>& nums) {
-//         int n=nums.size();
-//         sort(nums.begin(),nums.end());
-//         return (nums[n-1]-1)*(nums[n-2]-1);
-//     }
-// };
-
-
-
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
         int n=nums.size();
-        int idx=0;
-        int max1=INT_MIN,max2=INT_MIN;
-        for(int i=0;i<n;i++)
-        {
-            if(max1<nums[i])
-            {
-                max1=nums[i];
-                idx=i;
-            }
-        }
-        for(int i=0;i<n;i++)
-        {
-            if(max2<nums[i] && i!=idx)
-            {
-                max2=nums[i];
-            }
-        }
-        return (max1-1)*(max2-1);
+        sort(nums.begin(),nums.end());
+        return (nums[n-1]-1)*(nums[n-2]-1);
     }
 };
+
+
+
+// class Solution {
+// public:
+//     int maxProduct(vector<int>& nums) {
+//         int n=nums.size();
+//         int idx=0;
+//         int max1=INT_MIN,max2=INT_MIN;
+//         for(int i=0;i<n;i++)
+//         {
+//             if(max1<nums[i])
+//             {
+//                 max1=nums[i];
+//                 idx=i;
+//             }
+//         }
+//         for(int i=0;i<n;i++)
+//         {
+//             if(max2<nums[i] && i!=idx)
+//             {
+//                 max2=nums[i];
+//             }
+//         }
+//         return (max1-1)*(max2-1);
+//     }
+// };
 
 
 
