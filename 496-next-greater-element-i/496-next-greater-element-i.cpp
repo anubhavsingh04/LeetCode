@@ -6,23 +6,62 @@ public:
         map<int,int>m;
         for(int i=nums2.size()-1;i>=0;i--)
         {
-            while(!st.empty()&&st.top()<nums2[i])
-                st.pop();
-            
             if(st.empty())
+            {
                 m[nums2[i]]=-1;
-            else 
+            }
+            else if(st.top()>nums2[i])
+            {
                 m[nums2[i]]=st.top();
-            
-            st.push(nums2[i]);   
+            }
+            else if(st.size()>0 && st.top()<nums2[i])
+            {
+                while(!st.empty()&&st.top()<nums2[i])
+                {
+                    st.pop();
+                }
+                if(st.empty())
+                    m[nums2[i]]=-1;
+                else m[nums2[i]]=st.top();
+            }
+            st.push(nums2[i]);
         }
         for(auto &i:nums1)
-        {
             ans.push_back(m[i]);
-        }
-        return ans ;
+        return ans;
     }
 };
+
+
+
+// class Solution {
+// public:
+//     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+//        vector<int>ans;
+//         stack<int>st;
+//         map<int,int>m;
+//         for(int i=nums2.size()-1;i>=0;i--)
+//         {
+//             while(!st.empty()&&st.top()<nums2[i])
+//                 st.pop();
+            
+//             if(st.empty())
+//                 m[nums2[i]]=-1;
+//             else 
+//                 m[nums2[i]]=st.top();
+            
+//             st.push(nums2[i]);   
+//         }
+//         for(auto &i:nums1)
+//         {
+//             ans.push_back(m[i]);
+//         }
+//         return ans ;
+//     }
+// };
+
+
+
 
 // class Solution {
 // public:
