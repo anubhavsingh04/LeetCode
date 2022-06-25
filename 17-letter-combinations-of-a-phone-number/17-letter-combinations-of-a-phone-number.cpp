@@ -1,22 +1,28 @@
-unordered_map<char, string> L({{'2',"abc"},{'3',"def"},{'4',"ghi"},
-    {'5',"jkl"},{'6',"mno"},{'7',"pqrs"},{'8',"tuv"},{'9',"wxyz"}});
-
 class Solution {
 public:
-    vector<string> letterCombinations(string D) {
-        int len = D.size();
-        vector<string> ans;
-        if (!len) return ans;
-        dfs(0, len, "", ans, D);
-        return ans;
-    }
-    
-    void dfs(int pos, int &len, string str, vector<string> &ans, string &D) {
-        if (pos == len) ans.push_back(str);
-        else {
-            string letters = L[D[pos]];
-            for (int i = 0; i < letters.size(); i++)
-                dfs(pos+1, len, str+letters[i], ans, D);
+    void solve(string digits, int idx, vector<string>&ans,string op ,unordered_map<char,string>&m)
+    {
+        if(idx>=digits.size())
+        {
+            ans.push_back(op);
         }
+        string s=m[digits[idx]];
+        for(int i=0;i<s.size();i++)
+        {
+            op.push_back(s[i]);
+            solve(digits,idx+1,ans,op,m);
+            op.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        unordered_map<char,string>m={{'2',"abc"},{'3',"def"},{'4',"ghi"},{'5',"jkl"},
+                          {'6',"mno"},{'7',"pqrs"},{'8',"tuv"},{'9',"wxyz"}};
+        vector<string> ans;
+        if(digits.empty())
+            return ans;
+        int idx=0;
+        string op="";
+        solve(digits,idx,ans,op,m);
+        return ans;
     }
 };
