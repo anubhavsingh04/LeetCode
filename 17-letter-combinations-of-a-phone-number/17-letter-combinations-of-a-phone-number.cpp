@@ -5,13 +5,16 @@ public:
         if(idx>=digits.size())
         {
             ans.push_back(op);
+            return;
         }
         string s=m[digits[idx]];
         for(int i=0;i<s.size();i++)
         {
             op.push_back(s[i]);
             solve(digits,idx+1,ans,op,m);
-            op.pop_back();
+            op.pop_back(); // dry run for better underdstading 
+            // jo op me hamne a dala tha usko hatana hai tabhi to dubara b ke call hoga 
+            // ip string empty honni chahiye backtracking ke samay
         }
     }
     vector<string> letterCombinations(string digits) {
