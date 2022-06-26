@@ -1,3 +1,87 @@
+// har column me queen rakh rakh ke check kr lo
+// same row me na ho 
+// same colmn me na ho 
+// same digonal me na ho 
+// agr ham queen left to right fill kr rhe hain to queen to left me chek kro 
+// so no need to check for right
+// to check 
+// har bar ek colm me ek queen place kr ke ham aage badh ja rhe means we will not place two Q
+// so no need to check for colm
+
+
+class Solution {
+public:
+    bool issafe(int row,int col,vector<string>&board,int n)
+    {   
+        int x=row;
+        int y=col;
+        // check for left
+        while(y>=0)
+        {
+            if(board[x][y]=='Q')
+                return false;
+            y--;
+        }
+        // check for digonal 
+        x=row;
+        y=col;
+        while(x>=0 && y>=0)
+        {
+            if(board[x][y]=='Q')
+                return false;
+            x--;
+            y--;
+        }
+        
+         // check for digonal 
+        x=row;
+        y=col;
+        while(x<n && y>=0)
+        {
+            if(board[x][y]=='Q')
+                return false;
+            x++;
+            y--;
+        }
+        return true;
+    }
+    
+    void solve(vector<string>&board,int &ans,int n,int col)
+    {
+        // base case 
+        if(col==n)
+        {
+            ans++;
+            return;
+        }
+        // pehle colm me har jgh rkh ke check kr lo baki recursion sambhal lega 
+        for(int row=0;row<n;row++)
+        {
+            if(issafe(row,col,board,n))
+            {
+                board[row][col]='Q';
+                solve(board,ans,n,col+1);
+                board[row][col]='.';
+            }
+        }
+    }
+    
+    int totalNQueens(int n) {
+		int ans=0;
+        vector<string>board(n,string(n,'.'));
+        int col=0;
+        
+        solve(board,ans,n,col);
+        return ans;
+        
+    }
+};
+
+
+
+
+
+
 // class Solution {
 // public:
 //         int totalNQueens(int n) {
@@ -27,23 +111,27 @@
 //     }
 // };
 
-class Solution {
-public:
-        int totalNQueens(int n) {
-	vector<bool> col(n), diag(2*n-1), anti_diag(2*n-1);
-	return solve(col, diag, anti_diag, 0);
-}
+
+
+
+
+// class Solution {
+// public:
+//         int totalNQueens(int n) {
+// 	vector<bool> col(n), diag(2*n-1), anti_diag(2*n-1);
+// 	return solve(col, diag, anti_diag, 0);
+// }
    
-int solve(vector<bool>& col, vector<bool>& diag, vector<bool>& anti_diag, int row) {
-	int n = size(col), count = 0;
-    if(row == n) return 1;
-	for(int column = 0; column < n; column++)           
-		if(!col[column] && !diag[row + column] && !anti_diag[row - column + n - 1]){        // check if (row, column) is safe
-			col[column] = diag[row + column] = anti_diag[row - column + n - 1] = true;      // place at (row, column)
-			count += solve(col, diag, anti_diag, row + 1);                                  // explore for the next row
-			col[column] = diag[row + column] = anti_diag[row - column + n - 1] = false;     // backtrack
-		}                                
-	return count;
-}
-};
+// int solve(vector<bool>& col, vector<bool>& diag, vector<bool>& anti_diag, int row) {
+// 	int n = size(col), count = 0;
+//     if(row == n) return 1;
+// 	for(int column = 0; column < n; column++)           
+// 		if(!col[column] && !diag[row + column] && !anti_diag[row - column + n - 1]){        // check if (row, column) is safe
+// 			col[column] = diag[row + column] = anti_diag[row - column + n - 1] = true;      // place at (row, column)
+// 			count += solve(col, diag, anti_diag, row + 1);                                  // explore for the next row
+// 			col[column] = diag[row + column] = anti_diag[row - column + n - 1] = false;     // backtrack
+// 		}                                
+// 	return count;
+// }
+// };
 
