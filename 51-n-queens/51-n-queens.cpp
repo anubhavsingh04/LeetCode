@@ -1,4 +1,13 @@
 // har column me queen rakh rakh ke check kr lo
+// same row me na ho 
+// same colmn me na ho 
+// same digonal me na ho 
+// agr ham queen left to right fill kr rhe hain to queen to left me chek kro 
+// so no need to check for right
+// to check 
+// har bar ek colm me ek queen place kr ke ham aage badh ja rhe means we will not place two Q
+// so no need to check for colm
+
 
 class Solution {
 public:
@@ -16,16 +25,7 @@ public:
     // }
     
     bool issafe(int row,int col,vector<string>&board,int n)
-    {
-        // same row me na ho 
-        // same colmn me na ho 
-        // same digonal me na ho 
-        // agr ham queen left to right fill kr rhe hain to queen to left me chek kro 
-        // so no need to check for right
-        // to check 
-        // har bar ek colm me ek queen place kr ke ham aage badh ja rhe means we will not place two Q
-        // so no need to check for colm
-        
+    {   
         int x=row;
         int y=col;
         // check for left
