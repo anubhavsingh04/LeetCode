@@ -8,6 +8,11 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// make a dummy node and point its next to head 
+// make two pointers slow and fast move the fast pointer n times 
+// then move slow and fats pointer until fast->next not becomes null return start->next
+// if n=5 then also it will give correct ans
+
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
