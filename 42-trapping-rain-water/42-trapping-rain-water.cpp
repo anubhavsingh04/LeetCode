@@ -2,6 +2,7 @@
 // to find the level of water above any buiding find the maxm on the left
 // and find the maximum on the right 
 // take the minimum of from maxm_left and maxm_right  
+// we will make maxm_left and maxm_right array to store the maxm height on left and right 
 
 class Solution {
 public:
