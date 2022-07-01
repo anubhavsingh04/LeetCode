@@ -1,3 +1,8 @@
+// Sort the boxes in decreasing order 
+// Take the boxes if the total no of boxes+ current number of  box is less than trucksize
+// otherwise check how many boxes we can take by subtracting total boxestaken from trucksize i.e.
+// trucksize-boxestaken 
+
 class Solution {
 public:
     static bool compare(vector<int>&a, vector<int>&b)
@@ -8,19 +13,21 @@ public:
     }
     int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
         sort(boxTypes.begin(),boxTypes.end(),compare);
+        
         int unit=0;
-        int boxes=0;
+        int boxesTaken=0;
+        
         for(int i=0;i<boxTypes.size();i++)
         {
             int curr=boxTypes[i][0];
-            if(boxes+curr<=truckSize)
+            if(boxesTaken+curr<=truckSize)
             {
-                boxes+=curr;
+                boxesTaken+=curr;
                 unit+=curr*boxTypes[i][1];
             }
             else 
             {
-                unit+=(truckSize-boxes)*boxTypes[i][1];
+                unit+=(truckSize-boxesTaken)*boxTypes[i][1];
                 break;
             }
         }
