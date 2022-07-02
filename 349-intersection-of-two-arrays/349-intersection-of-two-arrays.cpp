@@ -1,3 +1,9 @@
+// Insert all the elements of nums1 into map
+// iterate through nums2 ans check is nums2[1] is found in map 
+// means this is common element hence store this element in another map(m2) to avoid repetetions 
+// iterate through all the elements of m2 and push back in the ans vector
+// Finally return the ans vector
+
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
