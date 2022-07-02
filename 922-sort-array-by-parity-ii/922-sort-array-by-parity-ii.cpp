@@ -3,6 +3,9 @@
 // move i forward by 2 unit untill nums[i] is even, 
 // if i reaches out at last index then break
 // similarly move j backward 2 unit untill nums[j] is odd 
+// now after this case either we will find a valid i,j pair  (swap in this case)
+// or i will reach the end and we will come out of outer while loop
+
 class Solution {
 public:
     vector<int> sortArrayByParityII(vector<int>& nums) {
