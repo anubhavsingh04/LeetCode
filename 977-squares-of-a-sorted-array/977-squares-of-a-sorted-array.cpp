@@ -1,5 +1,6 @@
 // Just iterate from right and put max of abs(nums[right]), abs(nums[left])
 // TC: O(n)
+
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& nums) {
