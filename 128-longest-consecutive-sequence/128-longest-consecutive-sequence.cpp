@@ -14,7 +14,7 @@ public:
             }
             for(int j=1;s.count(num+j);j++)
             {
-                s.erase(num-j);
+                s.erase(num+j);
                 curr++;
             }
             longest=max(longest,curr);
