@@ -6,22 +6,45 @@ public:
         
         for(auto &num: nums)
         {
-            int curr=1;
-            for(int j=1;s.count(num-j);j++)
-            {
-                s.erase(num-j);
-                curr++;
-            }
-            for(int j=1;s.count(num+j);j++)
-            {
-                s.erase(num+j);
-                curr++;
-            }
-            longest=max(longest,curr);
+            if(s.count(num-1))
+                continue;
+            int j=1;
+            while(s.count(num+j))
+                j++;
+            
+            longest=max(longest,j);
         }
         return longest;
     }
 };
+
+
+
+
+// class Solution {
+// public:
+//     int longestConsecutive(vector<int>& nums) {
+//         int longest=0;
+//         unordered_set<int>s(nums.begin(),nums.end());
+        
+//         for(auto &num: nums)
+//         {
+//             int curr=1;
+//             for(int j=1;s.count(num-j);j++)
+//             {
+//                 s.erase(num-j);
+//                 curr++;
+//             }
+//             for(int j=1;s.count(num+j);j++)
+//             {
+//                 s.erase(num+j);
+//                 curr++;
+//             }
+//             longest=max(longest,curr);
+//         }
+//         return longest;
+//     }
+// };
 
 
 // TC O(nlog(n))+O(n)
