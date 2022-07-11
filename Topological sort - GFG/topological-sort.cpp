@@ -7,38 +7,70 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	
-	void dfs(int src,vector<int>&vis,stack<int>&st,vector<int>adj[])
+	// Using dfs
+// 	void dfs(int src,vector<int>&vis,stack<int>&st,vector<int>adj[])
+// 	{
+// 	    vis[src]=1;
+// 	    for(auto &i:adj[src])
+// 	    {
+// 	        if(!vis[i])
+// 	        {
+// 	            dfs(i,vis,st,adj);
+// 	        }
+// 	    }
+// 	    st.push(src);
+// 	}
+
+// 	vector<int> topoSort(int V, vector<int> adj[]) 
+// 	{
+// 	    vector<int>vis(V,0);
+// 	    stack<int>st;
+// 	    for(int i=0;i<V;i++)
+// 	    {
+// 	        if(!vis[i])
+// 	        {
+// 	            dfs(i,vis,st,adj);
+// 	        }
+// 	    }
+// 	    vector<int>ans;
+// 	    while(!st.empty())
+// 	    {
+// 	        ans.push_back(st.top());
+// 	        st.pop();
+// 	    }
+// 	    return ans;
+// 	}
+
+    vector<int> topoSort(int V, vector<int> adj[]) 
 	{
-	    vis[src]=1;
-	    for(auto &i:adj[src])
+	    vector<int>indegree(V,0);
+	    for(int x=0;x<V;x++)
 	    {
-	        if(!vis[i])
+	        for(auto &i:adj[x])
 	        {
-	            dfs(i,vis,st,adj);
+	            indegree[i]++;
 	        }
 	    }
-	    st.push(src);
-	}
-	
-	vector<int> topoSort(int V, vector<int> adj[]) 
-	{
-	    vector<int>vis(V,0);
-	    stack<int>st;
+	    queue<int>q;
 	    for(int i=0;i<V;i++)
 	    {
-	        if(!vis[i])
+	        if(indegree[i]==0)
+	        q.push(i);
+	    }
+	    vector<int>topo;
+	    while(!q.empty())
+	    {
+	        int curr=q.front();
+	        q.pop();
+	        topo.push_back(curr);
+	        for(auto &i:adj[curr])
 	        {
-	            dfs(i,vis,st,adj);
+	            indegree[i]--;
+	            if(indegree[i]==0)
+	            q.push(i);
 	        }
 	    }
-	    vector<int>ans;
-	    while(!st.empty())
-	    {
-	        ans.push_back(st.top());
-	        st.pop();
-	    }
-	    return ans;
+	    return topo;
 	}
 };
 
