@@ -6,35 +6,54 @@ using namespace std;
 class Solution {
 public:
 
-    bool bfs(int src,vector<int>adj[],vector<int>&color)
+    // bool bfs(int src,vector<int>adj[],vector<int>&color)
+    // {
+    //     color[src]=1;
+    //     queue<int>q;
+    //     q.push(src);
+    //     while(!q.empty())
+    //     {
+    //         int curr=q.front();
+    //         q.pop();
+    //         for(auto &i:adj[curr])
+    //         {
+    //             if(color[i]==-1)
+    //             {
+    //                 color[i]=1-color[curr];
+    //                 q.push(i);
+    //             }
+    //             else if(color[i]==color[curr])
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+    
+    bool dfs(int src,vector<int>adj[],vector<int>&color)
     {
+        if(color[src]==-1)
         color[src]=1;
-        queue<int>q;
-        q.push(src);
-        while(!q.empty())
+        for(auto &i:adj[src])
         {
-            int curr=q.front();
-            q.pop();
-            for(auto &i:adj[curr])
+            if(color[i]==-1)
             {
-                if(color[i]==-1)
-                {
-                    color[i]=1-color[curr];
-                    q.push(i);
-                }
-                else if(color[i]==color[curr])
+                color[i]=1-color[src];
+                if(!dfs(i,adj,color))
                 return false;
             }
+            else if(color[i]==color[src])
+            return false;
         }
         return true;
     }
+    
 	bool isBipartite(int V, vector<int>adj[]){
 	    vector<int>color(V,-1);
 	    for(int i=0;i<V;i++)
 	    {
 	        if(color[i]==-1)
 	        {
-	            if(!bfs(i,adj,color))
+	            if(!dfs(i,adj,color))
 	            return false;
 	        }
 	    }
