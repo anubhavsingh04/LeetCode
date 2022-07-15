@@ -28,7 +28,7 @@ public:
         
         help(root->left,s);
         help(root->right,s);
-        s.pop_back();
+        // s.pop_back();
     }
     string smallestFromLeaf(TreeNode* root) {
         help(root,"");
