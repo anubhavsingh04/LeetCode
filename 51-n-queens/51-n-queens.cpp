@@ -11,19 +11,7 @@
 
 class Solution {
 public:
-    // void addsoln(vector<string>&board,vector<vector<string>>&ans,int n)
-    // {
-    //     vector<string>tmp(n);
-    //     for(int i=0;i<n;i++)
-    //     {
-    //         for(int j=0;j<n;j++)
-    //         {
-    //             tmp[i][j]=board[i][j];
-    //         }
-    //     }
-    //     ans.push_back(tmp);
-    // }
-    
+   
     bool issafe(int row,int col,vector<string>&board,int n)
     {   
         int x=row;
