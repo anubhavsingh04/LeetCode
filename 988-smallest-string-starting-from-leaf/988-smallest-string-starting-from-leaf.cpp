@@ -10,31 +10,62 @@
  * };
  */
 
+
 class Solution {
 public:
-    string ans="";
+    string ans;
     void help(TreeNode* root ,string s)
     {
         
     if(!root) return;
-        s=(char)(root->val+97)+s;
+        
+        s.push_back(root->val+97);
         if(root->left==NULL and root->right==NULL )
         {
-            if(ans.empty()) 
-                ans=s;
-            else 
-                ans=min(ans,s);
+            string tmp=s;
+            reverse(tmp.begin(),tmp.end());
+            if(ans.empty()||tmp<ans)
+            ans=tmp;
         }
         
         help(root->left,s);
         help(root->right,s);
-        // s.pop_back();
+        s.pop_back();
     }
     string smallestFromLeaf(TreeNode* root) {
+        if(!root) return ans;
         help(root,"");
         return ans;
     }
 };
+
+
+
+// class Solution {
+// public:
+//     string ans="";
+//     void help(TreeNode* root ,string s)
+//     {
+        
+//     if(!root) return;
+//         s=(char)(root->val+97)+s;
+//         if(root->left==NULL and root->right==NULL )
+//         {
+//             if(ans.empty()) 
+//                 ans=s;
+//             else 
+//                 ans=min(ans,s);
+//         }
+        
+//         help(root->left,s);
+//         help(root->right,s);
+//         // s.pop_back();
+//     }
+//     string smallestFromLeaf(TreeNode* root) {
+//         help(root,"");
+//         return ans;
+//     }
+// };
 
 
 // class Solution {
