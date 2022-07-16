@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Backtracking +recursion
+
 class Solution {
 public:
     vector<vector<int>>ans;
