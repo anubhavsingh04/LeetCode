@@ -25,6 +25,10 @@ public:
             }
             else 
             {
+                // we came in else block means curr character is new character 
+                //if the string correcponding to this character is already in set 
+                // then there will be many to one mapping 
+                // i.e. same string is matching to two different character 
                 if(st.count(v[i])>0) return false;
                 m[pattern[i]]=v[i];
                 st.insert(v[i]);
