@@ -8,42 +8,73 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+ class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        queue<ListNode*>qsmall,qlarge;
-        ListNode*tmp=head;
-        while(tmp)
+        ListNode*frontdummy=new ListNode(0),*backdummy=new ListNode(0);
+        ListNode*front=frontdummy,*back=backdummy,*curr=head;
+        while(curr)
         {
-            if(tmp->val>=x)
+            if(curr->val>=x)
             {
-                qlarge.push(tmp);
+                back->next=curr;
+                back=curr;
             }
-            else 
+            else
             {
-                qsmall.push(tmp);
+                front->next=curr;
+                front=curr;
             }
-            tmp=tmp->next;
+            curr=curr->next;
         }
-        ListNode*dummy= new ListNode(0);
-        tmp=dummy;
-        while(!qsmall.empty())
-        {
-            auto curr=qsmall.front();
-            qsmall.pop();
-            ListNode*newnode=new ListNode(curr->val);
-            tmp->next=newnode;
-            tmp=newnode;
-        }
-        while(!qlarge.empty())
-        {
-            auto curr=qlarge.front();
-            qlarge.pop();
-            ListNode* newnode=new ListNode(curr->val);
-            tmp->next=newnode;
-            tmp=newnode;
-        }
-        tmp->next=NULL;
-        return dummy->next;
+        back->next=NULL;
+        front->next=backdummy->next;
+        return frontdummy->next;
     }
 };
+
+
+
+
+
+
+
+// class Solution {
+// public:
+//     ListNode* partition(ListNode* head, int x) {
+//         queue<ListNode*>qsmall,qlarge;
+//         ListNode*tmp=head;
+//         while(tmp)
+//         {
+//             if(tmp->val>=x)
+//             {
+//                 qlarge.push(tmp);
+//             }
+//             else 
+//             {
+//                 qsmall.push(tmp);
+//             }
+//             tmp=tmp->next;
+//         }
+//         ListNode*dummy= new ListNode(0);
+//         tmp=dummy;
+//         while(!qsmall.empty())
+//         {
+//             auto curr=qsmall.front();
+//             qsmall.pop();
+//             ListNode*newnode=new ListNode(curr->val);
+//             tmp->next=newnode;
+//             tmp=newnode;
+//         }
+//         while(!qlarge.empty())
+//         {
+//             auto curr=qlarge.front();
+//             qlarge.pop();
+//             ListNode* newnode=new ListNode(curr->val);
+//             tmp->next=newnode;
+//             tmp=newnode;
+//         }
+//         tmp->next=NULL;
+//         return dummy->next;
+//     }
+// };
