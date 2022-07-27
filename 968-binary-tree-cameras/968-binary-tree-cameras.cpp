@@ -32,7 +32,7 @@ public:
         }
         if(left==0||right==0) return 1; // dono child ke pas cammera nahi hai 
                                           // aur cammera bhi nahi chahiye
-        return -1;    // then parent bolega mughe mera parent dekhega
+        return -1;    // then parent bolega mughe mera parent dekhega -->credit pepcoding
     }
 };
 
