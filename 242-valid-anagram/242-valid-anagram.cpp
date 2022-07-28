@@ -1,4 +1,4 @@
-// TC: O(n) space: O(1)
+// TC: O(nlogn) space: O(1)
 
 // class Solution {
 // public:
@@ -13,21 +13,39 @@
 // };
 
 
-// Using map 
+// Using map TC: O(n) space: O(n)
+// class Solution {
+// public:
+//     bool isAnagram(string s, string t) {
+//         if(s.size()!=t.size()) return false;
+//         map<char,int>m;
+//         for(int i=0;i<s.size();i++)
+//         {
+//             m[s[i]]++;
+//             m[t[i]]--;
+//         }
+//         for(auto &x:m)
+//         {
+//             if(x.second!=0) return false;
+//         }
+//         return true;
+//     }
+// };
+
+
+
+// TC: O(n) space O(n)
+
 class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.size()!=t.size()) return false;
-        map<char,int>m;
+        map<char,int>m1,m2;
         for(int i=0;i<s.size();i++)
         {
-            m[s[i]]++;
-            m[t[i]]--;
+            m1[s[i]]++;
+            m2[t[i]]++;
         }
-        for(auto &x:m)
-        {
-            if(x.second!=0) return false;
-        }
-        return true;
+        return m1==m2;
     }
 };
