@@ -1,16 +1,16 @@
 // TC: O(nlogn) space: O(1)
 
-// class Solution {
-// public:
-//     bool isAnagram(string s, string t) {
-//         if (s.size()!=t.size()) return false;
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.size()!=t.size()) return false;
         
-//         sort(s.begin(), s.end());
-//         sort(t.begin(), t.end());
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
         
-//         return s==t;            
-//     }
-// };
+        return s==t;            
+    }
+};
 
 
 // Using map TC: O(n) space: O(n)
@@ -50,16 +50,18 @@
 //     }
 // };
 
-class Solution {
-public:
-    bool isAnagram(string s, string t) {
-        if(s.size()!=t.size()) return false;
-        multiset<char>s_set,t_set;
-        for(int i=0;i<s.size();i++)
-        {
-            s_set.insert(s[i]);
-            t_set.insert(t[i]);
-        }
-        return s_set==t_set;
-    }
-};
+
+// Using multiset 
+// class Solution {
+// public:
+//     bool isAnagram(string s, string t) {
+//         if(s.size()!=t.size()) return false;
+//         multiset<char>s_set,t_set;
+//         for(int i=0;i<s.size();i++)
+//         {
+//             s_set.insert(s[i]);
+//             t_set.insert(t[i]);
+//         }
+//         return s_set==t_set;
+//     }
+// };
