@@ -1,3 +1,7 @@
+// Traverse the matrix 
+// Take two vector to mark the rows and column in which the entry is 0
+// finally mark matrix[i][j] is 0 if either of the row[i] or column[i] is 0  
+
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
