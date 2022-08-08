@@ -1,4 +1,9 @@
 // KADANES ALGO--> we will carry the subarray sum as long as it is greater than zero
+// traverse in array
+// Take two variable sum and maxsum=nums[0] sum is to store the sum of subarray till i index and 
+// in each step we take max(sum,maxsum) i.e. if sum >=0 then it will be included in the subarray 
+// else if sum<0 assign sum=0 
+
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
