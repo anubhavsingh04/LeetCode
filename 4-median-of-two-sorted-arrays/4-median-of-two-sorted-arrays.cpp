@@ -1,46 +1,64 @@
 class Solution {
 public:
-    vector<int>merge(vector<int>&nums1,vector<int>&nums2,int n,int m)
-    {
-        vector<int>ans;
-        int i=0,j=0;
-        while(i<n && j<m)
-        {
-            if(nums1[i]<nums2[j])
-            {
-                ans.push_back(nums1[i]);
-                i++;
-            }
-            else{
-                ans.push_back(nums2[j]);
-                j++;
-            }
-        }
-        while(i<n)
-        {
-            ans.push_back(nums1[i]);
-            i++;
-        }
-        while(j<m)
-        {
-            ans.push_back(nums2[j]);
-            j++;
-        }
-        return ans;
-    }
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        int n=nums1.size();
-        int m=nums2.size();
-        vector<int>v=merge(nums1,nums2,n,m);
-        int size=v.size();
-
-        if(size&1) 
-            return v[size/2];
+        for(int i=0;i<nums2.size();i++)
+            nums1.push_back(nums2[i]);
+        
+        sort(nums1.begin(),nums1.end());
+        if(nums1.size()&1)
+            return nums1[nums1.size()/2];
         else 
-            return (v[size/2]+v[size/2-1])/(double)2;
-        // return median;
+            return (nums1[nums1.size()/2]+nums1[nums1.size()/2-1])/(double)2;
     }
 };
+
+
+
+
+
+// class Solution {
+// public:
+//     vector<int>merge(vector<int>&nums1,vector<int>&nums2,int n,int m)
+//     {
+//         vector<int>ans;
+//         int i=0,j=0;
+//         while(i<n && j<m)
+//         {
+//             if(nums1[i]<nums2[j])
+//             {
+//                 ans.push_back(nums1[i]);
+//                 i++;
+//             }
+//             else{
+//                 ans.push_back(nums2[j]);
+//                 j++;
+//             }
+//         }
+//         while(i<n)
+//         {
+//             ans.push_back(nums1[i]);
+//             i++;
+//         }
+//         while(j<m)
+//         {
+//             ans.push_back(nums2[j]);
+//             j++;
+//         }
+//         return ans;
+//     }
+//     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+//         int n=nums1.size();
+//         int m=nums2.size();
+//         vector<int>v=merge(nums1,nums2,n,m);
+//         int size=v.size();
+
+//         if(size&1) 
+//             return v[size/2];
+//         else 
+//             return (v[size/2]+v[size/2-1])/(double)2;
+//         // return median;
+//     }
+// };
 
 
 
