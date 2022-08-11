@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-// valid bst will 
+
 class Solution {
 public:
    
@@ -28,7 +28,7 @@ public:
 
 
 
-// bst valid tab hoga jab uska inorder travresal sorted array dega TC: O(n) SC: O(n)
+// BST will be valid only if inorder traversal will give sorted array TC: O(n) SC: O(n)
 // class Solution {
 // public:
 //    void inorder(TreeNode*root,vector<int>&ans)
