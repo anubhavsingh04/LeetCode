@@ -6,14 +6,14 @@ public:
     vector<int> diStringMatch(string s){
         vector<int>ans;
         int start=0,end=s.size();
-        for(int i=0;i<s.size();i++)
+        for(int i=0;i<=s.size();i++)
         {
             if(s[i]=='I')
                 ans.push_back(start++);
             else 
                 ans.push_back(end--);
         }
-        ans.push_back(start++);
+        // ans.push_back(start++);
         return ans;
     }
 };
