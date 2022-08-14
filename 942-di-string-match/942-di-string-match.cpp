@@ -1,6 +1,4 @@
-// In for loop we have pushed n integer 1 integer is remaining 
-// after coming out of the for loop value of  start and end will be equal so push any of them
-
+// total we have to push n+1 integer ranging from 0 to n
 class Solution{
 public:
     vector<int> diStringMatch(string s){
@@ -13,10 +11,31 @@ public:
             else 
                 ans.push_back(end--);
         }
-        // ans.push_back(start++);
         return ans;
     }
 };
+
+
+
+// In for loop we have pushed n integer 1 integer is remaining 
+// after coming out of the for loop value of  start and end will be equal so push any of them
+
+// class Solution{
+// public:
+//     vector<int> diStringMatch(string s){
+//         vector<int>ans;
+//         int start=0,end=s.size();
+//         for(int i=0;i<s.size();i++)
+//         {
+//             if(s[i]=='I')
+//                 ans.push_back(start++);
+//             else 
+//                 ans.push_back(end--);
+//         }
+//         ans.push_back(start++);
+//         return ans;
+//     }
+// };
 
 
 
