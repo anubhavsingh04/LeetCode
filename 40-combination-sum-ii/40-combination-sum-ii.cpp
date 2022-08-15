@@ -11,13 +11,13 @@ public:
         for(int i=idx;i<nums.size();i++)
         {
             if(i!=idx && nums[i]==nums[i-1]) continue;
-            if(nums[i]<=target)
-            {
-            // if(nums[i]>target) break;
+            // if(nums[i]<=target)
+            // {
+            if(nums[i]>target) break;
                 v.push_back(nums[i]);
                 solve(nums,target-nums[i],i+1,v,ans);
                 v.pop_back();
-            }
+            // }
         }
     }
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
