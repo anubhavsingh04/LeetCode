@@ -10,7 +10,7 @@ public:
             string curr="";
             for(auto &j:i)
             {
-                curr+=v[j-97];
+                curr+=v[j-'a'];
             }
             st.insert(curr);
         }
