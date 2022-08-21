@@ -4,6 +4,34 @@
 // in each step we take max(sum,maxsum) i.e. if sum >=0 then it will be included in the subarray 
 // else if sum<0 assign sum=0 
 
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+       int ans=INT_MIN;
+        int sum=0,n=nums.size();
+        for(int i=0;i<n;i++)
+        {
+            sum+=nums[i];
+            ans=max(ans,sum);
+            sum=max(sum,0);
+        }
+        return ans;
+        
+        // for min subarray sum
+        // long long ans=INT_MAX;
+        // int sum=0;
+        // for(int i=0;i<n;i++)
+        // {
+        //     sum+=nums[i];
+        //     ans=min(ans,sum);
+        //     sum=min(sum,0);
+        // }
+        // return ans;
+    }
+};
+
+
 // class Solution {
 // public:
 //     int maxSubArray(vector<int>& nums) {
@@ -19,20 +47,20 @@
 // };
 
 
-class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-       int sum=0,max_sum=nums[0];
-        int n=nums.size();
-        for(int i=0;i<n;i++)
-        {
-            sum+=nums[i];
-            max_sum=max(max_sum,sum);
-            if(sum<0) sum=0;
-        }
-        return max_sum;
-    }
-};
+// class Solution {
+// public:
+//     int maxSubArray(vector<int>& nums) {
+//        int sum=0,max_sum=nums[0];
+//         int n=nums.size();
+//         for(int i=0;i<n;i++)
+//         {
+//             sum+=nums[i];
+//             max_sum=max(max_sum,sum);
+//             if(sum<0) sum=0;
+//         }
+//         return max_sum;
+//     }
+// };
 
 
 
