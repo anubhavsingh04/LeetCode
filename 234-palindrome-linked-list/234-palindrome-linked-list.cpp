@@ -8,7 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
+// Stack
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
@@ -29,7 +29,7 @@ public:
     }
 };
 
-
+// Two pointers 
 // class Solution {
 // public:
 //     bool isPalindrome(ListNode* head) {
@@ -42,6 +42,7 @@ public:
 //         prev=slow;
 //         slow=slow->next;
 //         prev->next=NULL;
+//         prev=NULL;
 //         // reverse half of list
 //         while(slow)
 //         {
@@ -60,8 +61,7 @@ public:
 //     }
 // };
 
-// More efficient 
-
+// stack and queue
 // class Solution {
 // public:
 //     bool isPalindrome(ListNode* head) {
