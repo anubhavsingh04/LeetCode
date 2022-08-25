@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        set<int>st;
+        unordered_set<int>st;
         int n=nums.size();
         vector<int>ans(2);
         int sum=(n*(n+1))/2;
