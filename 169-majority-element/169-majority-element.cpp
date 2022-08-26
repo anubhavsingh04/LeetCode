@@ -23,6 +23,7 @@
 //     }
 // };
 
+// Using n_th element 
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
