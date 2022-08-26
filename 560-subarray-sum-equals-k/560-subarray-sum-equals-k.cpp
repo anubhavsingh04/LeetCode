@@ -10,18 +10,18 @@ public:
             prefix[i+1]=prefix[i]+nums[i];
         }
         
-        for(auto i:prefix)
-        {
-            cout<<i<<" ";
-        }
-        cout<<endl;
+        // for(auto i:prefix)
+        // {
+        //     cout<<i<<" ";
+        // }
+        // cout<<endl;
         for(auto i:prefix)
         {
             m[i]++;
         }
-        for(auto i:m) {
-            cout<<i.first<<" -> "<<i.second<<endl;
-        }
+        // for(auto i:m) {
+        //     cout<<i.first<<" -> "<<i.second<<endl;
+        // }
         for(int i=0;i<prefix.size();i++)
         {
             m[prefix[i]]--;
