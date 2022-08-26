@@ -26,7 +26,7 @@ public:
         {
             m[prefix[i]]--;
             if(m.find(prefix[i]+k)!=m.end())
-                cout<<m[prefix[i]+k]<<" ";
+                // cout<<m[prefix[i]+k]<<" ";
                 cnt+=m[prefix[i]+k];
         }
         return cnt;
