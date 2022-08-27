@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool dfs(vector<vector<int>>& graph,int vertex,vector<int>&vis,set<int>&safeNode)
+    bool dfs(vector<vector<int>>& graph,int vertex,vector<int>&vis,unordered_set<int>&safeNode)
     {
           vis[vertex]=1;
          for(auto child:graph[vertex])
@@ -17,7 +17,7 @@ public:
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         
         int n=graph.size();
-        set<int>safeNode;
+        unordered_set<int>safeNode;
         vector<int>vis(n,0);
         for(int i=0;i<n;i++)
         {
@@ -28,6 +28,7 @@ public:
         }
         vector<int>ans;
         for(auto it:safeNode)ans.push_back(it);
+         sort(ans.begin(),ans.end());
         return ans;
         
     }
