@@ -7,7 +7,7 @@ public:
          {
               
               if(safeNode.find(child)!=safeNode.end())continue;
-              if(vis[child])return false;
+              if(vis[child]==1)return false;
               vis[child]=1;
               if(!dfs(graph,child,vis,safeNode))return false ;   
          }
