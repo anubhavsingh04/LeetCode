@@ -1,24 +1,34 @@
 class Solution {
 public:
-    bool dfs(vector<vector<int>>& graph,vector<int>& color,int node)
+    bool dfs(vector<vector<int>>& graph,int vertex,vector<int>&vis,set<int>&safeNode)
     {
-        color[node]=1;  // Initially assume that the node is unsafe.
-        
-        for(auto cur : graph[node])
-            if((color[cur]==0 && dfs(graph,color,cur)) || color[cur]==1)
-                return true;
-        
-        color[node]=2;  // If there is no cycle mark node as safe.
-        return false;
+          vis[vertex]=1;
+         for(auto child:graph[vertex])
+         {
+              
+              if(safeNode.find(child)!=safeNode.end())continue;
+              if(vis[child])return false;
+              vis[child]=1;
+              if(!dfs(graph,child,vis,safeNode))return false ;   
+         }
+        safeNode.insert(vertex);
+        return true;
     }
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
-        vector<int> color(graph.size()),result;
-		
-		// If node is visited and safe or unvisited and does not contain cycle then add it to the answer.
-        for(int i=0;i<graph.size();i++)
-            if(color[i]==2 ||  !dfs(graph,color,i))
-                result.push_back(i);
-                
-        return result;
+        
+        int n=graph.size();
+        set<int>safeNode;
+        vector<int>vis(n,0);
+        for(int i=0;i<n;i++)
+        {
+            if(vis[i]==0)
+            {
+                dfs(graph,i,vis,safeNode);
+            }
+        }
+        vector<int>ans;
+        for(auto it:safeNode)ans.push_back(it);
+        return ans;
+        
     }
 };
