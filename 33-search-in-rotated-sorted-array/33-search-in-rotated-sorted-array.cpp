@@ -9,14 +9,14 @@ public:
                 return mid;
             if(nums[s]<=nums[mid])
             {
-                if(target<=nums[mid]&&target>=nums[s])
+                if(target<nums[mid]&&target>=nums[s])
                     e=mid-1;
                 else
                     s=mid+1;
             }
             else
             {
-                if(target>=nums[mid]&&target<=nums[e])
+                if(target>nums[mid]&&target<=nums[e])
                     s=mid+1;
                 else
                     e=mid-1;
