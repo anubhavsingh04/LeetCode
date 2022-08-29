@@ -1,53 +1,22 @@
 class Solution {
 public:
-    vector<vector<int>>v;
-    set<vector<int>>st;
-    void solve(vector<int> ip,vector<int>op)
+    void solve(vector<int>&nums,vector<int>op,int idx,set<vector<int>>&st)
     {
-        if(ip.size()==0)
-        {
+        if(idx==nums.size()){
             sort(op.begin(),op.end());
             st.insert(op);
-            return ;
+            return;
         }
-        vector<int>op1=op;
-        vector<int>op2=op;
-        op2.push_back(ip[0]);
-        ip.erase(ip.begin()+0);
-        solve(ip,op1);
-        solve(ip,op2);
-        return ;
+        solve(nums,op,idx+1,st);
+        op.push_back(nums[idx]);
+        solve(nums,op,idx+1,st);
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        set<vector<int>>st;
+        vector<vector<int>>ans;
         vector<int>op;
-        solve(nums,op);
-        for(auto &i:st){
-            v.push_back(i);
-        }
-        return v;
+        solve(nums,op,0,st);
+        for(auto i:st) ans.push_back(i);
+        return ans;
     }
 };
-
-// class Solution {
-// public:
-//     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-//         sort(nums.begin(), nums.end());
-        
-//         vector<vector<int>> res = {{}};
-//         vector<int> curr;
-//         int size;
-        
-//         for (auto num : nums) {
-//             size = res.size();
-            
-//             for (int i = 0; i < size; i++) {
-//                 curr = res[i];
-//                 curr.push_back(num);
-//                 if (find(res.begin(), res.end(), curr) == res.end())
-//                     res.push_back(curr);
-//             }
-//         }
-        
-//         return res;
-//     }
-// };
