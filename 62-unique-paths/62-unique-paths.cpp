@@ -1,24 +1,37 @@
 // Most optimal is using combinations
 // we have to move int total of n-1 steps to right and m-1 steps to bottom
 // if we can choose n-1 steps right out of m+n-2 then m-1 will be automatically placed 
+// class Solution {
+// public:
+//     int uniquePaths(int m, int n) {
+//         int N=m+n-2;
+//         int r=n-1;
+//         double ans=1;
+//         for(int i=1;i<=r;i++)
+//         {
+//             ans=ans*(N-r+i)/i;
+//         }
+//         return (int)ans;
+//     }
+// };
+
+
+
+
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        int N=m+n-2;
-        int r=n-1;
-        double ans=1;
-        for(int i=1;i<=r;i++)
+       vector<vector<int>>dp(m,vector<int>(n,1));
+        for(int i=1;i<m;i++)
         {
-            ans=ans*(N-r+i)/i;
+            for(int j=1;j<n;j++)
+            {
+                dp[i][j]=dp[i-1][j]+dp[i][j-1];
+            }
         }
-        return (int)ans;
+        return dp[m-1][n-1];
     }
 };
-
-
-
-
-
 
 
 
