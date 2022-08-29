@@ -1,4 +1,4 @@
-// o(n)
+// TC: o(n) SC: O(n)
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -8,6 +8,7 @@ public:
         while(j<n){
             if(m.find(s[j])!=m.end()&&m[s[j]]>=i)
                 i=m[s[j]]+1;
+            
             m[s[j]]=j;
             ans=max(ans,j-i+1);
             j++;
@@ -30,7 +31,7 @@ public:
 //     }
 // };
 
-// sliding window o(n^2)
+// sliding window o(2*n)
 
 // class Solution {
 // public:
