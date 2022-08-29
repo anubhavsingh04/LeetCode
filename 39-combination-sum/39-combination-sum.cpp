@@ -1,3 +1,4 @@
+// 
 // class Solution {
 // public:
 //     void solve(vector<int>& nums,vector<int>op,int idx,int target,vector<vector<int>>&ans)
@@ -46,7 +47,6 @@ public:
         }
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        sort(candidates.begin(),candidates.end());
         vector<int>op;
         vector<vector<int>>ans;
         solve(candidates,op,0,0,target,ans);
