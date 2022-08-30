@@ -11,39 +11,18 @@
  */
 class Solution {
 public:
-    TreeNode*solve(vector<int>&nums,int left,int right)
+    TreeNode*solve(vector<int>&nums,int l,int r)
     {
-        if(left>right) return NULL;
-        int mid=(left+right)/2;
+        if(l>r) {
+            return NULL;
+        }
+        int mid=(l+r)/2;
         TreeNode*root=new TreeNode(nums[mid]);
-        root->left=solve(nums,left,mid-1);
-        root->right=solve(nums,mid+1,right);
+        root->left=solve(nums,l,mid-1);
+        root->right=solve(nums,mid+1,r);
         return root;
     }
     TreeNode* sortedArrayToBST(vector<int>& nums) {
         return solve(nums,0,nums.size()-1);
     }
 };
-
-
-
-
-
-// class Solution {
-// public:
-//     TreeNode* sortedArrayToBST(vector<int>& nums) {
-//         return func(nums,0,nums.size()-1);
-//     }
-//     TreeNode* func(vector<int>&nums,int s,int e)
-//     {
-//         if(s<=e)
-//         {
-//             int mid=s+(e-s)/2;
-//             TreeNode*node=new TreeNode(nums[mid]);
-//             node->left=func(nums, s, mid-1);
-//             node->right=func(nums, mid+1, e);
-//             return node;
-//         }
-//         return NULL;
-//     }
-// };
