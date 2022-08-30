@@ -1,15 +1,16 @@
 class Solution {
 public:
     string getPermutation(int n, int k) {
-        int fact=1;
-        string ans="";
         vector<int>nums;
-        for(int i=1;i<n;i++){
+        int fact=1;
+        for(int i=1;i<n;i++)
+        {
             nums.push_back(i);
             fact*=i;
         }
         nums.push_back(n);
         k=k-1;
+        string ans="";
         while(true)
         {
             ans+=to_string(nums[k/fact]);
