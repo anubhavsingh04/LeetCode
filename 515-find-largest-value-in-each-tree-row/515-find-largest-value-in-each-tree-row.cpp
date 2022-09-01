@@ -16,7 +16,6 @@ public:
         if(!root) return ans;
     	queue<TreeNode*>q;
     	q.push(root);
-    	int lefttoright=1;
     	while(!q.empty())
     	{
     	    int maxi=INT_MIN;
