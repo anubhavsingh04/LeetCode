@@ -11,16 +11,12 @@ public:
             }
             else 
             {
-                if(st.empty())
-                    return false ;
-                else 
+                if(st.empty()) return false ;
+                if(m[ch]+m[st.top()]==0)
                 {
-                    char c=st.top();
-                    if(m[ch]+m[c]!=0)
-                        return false ;
-                    else 
-                        st.pop();
+                    st.pop();
                 }
+                else return false;
             }
         }
         return st.empty();
