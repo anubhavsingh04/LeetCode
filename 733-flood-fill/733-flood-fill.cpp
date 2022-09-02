@@ -1,41 +1,64 @@
 class Solution {
 public: 
-    bool isValid(int newrow,int newcol,int n,int m,vector<vector<int>>& image,
-                 vector<vector<int>>& ans,int inicolor,int newcolor)
+    void dfs(int i,int j,vector<vector<int>>&image,int inicolor,int newcolor)
     {
-        if(newrow>=0 && newrow<n && newcol>=0 && newcol<m && 
-          image[newrow][newcol]==inicolor && ans[newrow][newcol]!=newcolor)
+        if(i<0||i>=image.size()||j<0||j>=image[0].size()||image[i][j]==newcolor||image[i][j]!=inicolor)
         {
-            return true;
+            return;
         }
-        return false;
-    }
-    void dfs(int sr,int sc,vector<vector<int>>& image,vector<vector<int>>& ans,int inicolor,int newcolor,
-            int delrow[],int delcol[])
-    {
-        ans[sr][sc]=newcolor;
-        int n=image.size();
-        int m=image[0].size();
-        for(int i=0;i<4;i++)
-        {
-            int newrow=sr+delrow[i];
-            int newcol=sc+delcol[i];
-            if(isValid(newrow,newcol,n,m,image,ans,inicolor,newcolor))
-            {
-                dfs(newrow,newcol,image,ans,inicolor,newcolor,delrow,delcol);
-            }
-        }
+        image[i][j]=newcolor;
+        dfs(i+1,j,image,inicolor,newcolor);
+        dfs(i-1,j,image,inicolor,newcolor);
+        dfs(i,j-1,image,inicolor,newcolor);
+        dfs(i,j+1,image,inicolor,newcolor);
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newcolor)
     {
         int inicolor=image[sr][sc];
-        vector<vector<int>>ans=image;
-        int delrow[]={-1,0,1,0};
-        int delcol[]={0,1,0,-1};
-        dfs(sr,sc,image,ans,inicolor,newcolor,delrow,delcol);
-        return ans;
+        dfs(sr,sc,image,inicolor,newcolor);
+        return image;
     }
 };
+
+
+// class Solution {
+// public: 
+//     bool isValid(int newrow,int newcol,int n,int m,vector<vector<int>>& image,
+//                  vector<vector<int>>& ans,int inicolor,int newcolor)
+//     {
+//         if(newrow>=0 && newrow<n && newcol>=0 && newcol<m && 
+//           image[newrow][newcol]==inicolor && ans[newrow][newcol]!=newcolor)
+//         {
+//             return true;
+//         }
+//         return false;
+//     }
+//     void dfs(int sr,int sc,vector<vector<int>>& image,vector<vector<int>>& ans,int inicolor,int newcolor,
+//             int delrow[],int delcol[])
+//     {
+//         ans[sr][sc]=newcolor;
+//         int n=image.size();
+//         int m=image[0].size();
+//         for(int i=0;i<4;i++)
+//         {
+//             int newrow=sr+delrow[i];
+//             int newcol=sc+delcol[i];
+//             if(isValid(newrow,newcol,n,m,image,ans,inicolor,newcolor))
+//             {
+//                 dfs(newrow,newcol,image,ans,inicolor,newcolor,delrow,delcol);
+//             }
+//         }
+//     }
+//     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newcolor)
+//     {
+//         int inicolor=image[sr][sc];
+//         vector<vector<int>>ans=image;
+//         int delrow[]={-1,0,1,0};
+//         int delcol[]={0,1,0,-1};
+//         dfs(sr,sc,image,ans,inicolor,newcolor,delrow,delcol);
+//         return ans;
+//     }
+// };
 
 
 
