@@ -8,28 +8,29 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-// make a dummy node and point its next to head 
-// make two pointers slow and fast move the fast pointer n times 
-// then move slow and fats pointer until fast->next not becomes null return start->next
-// if n=5 then also it will give correct ans
-
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode*start=new ListNode();
-        start->next=head;
-        ListNode*slow=start,*fast=start; // pointing to one previous 
-        
-        for(int i=0;i<n;i++) // move fast pointer n times a
+        ListNode*dummy=new ListNode(0);
+        dummy->next=head;
+        if(!head) return NULL;
+        if(!head->next) return NULL;
+        ListNode*curr=head;
+        int cnt=0;
+        while(curr)
         {
-            fast=fast->next;
+            cnt++;
+            curr=curr->next;
         }
-        while(fast->next!=NULL)
+        // cout<<cnt<<"$ ";
+        if(n==cnt) return head->next;
+        n=cnt-n;
+        for(int i=0;i<n;i++)
         {
-            fast=fast->next;
-            slow=slow->next;
+            dummy=dummy->next;
         }
-        slow->next=slow->next->next;
-        return start->next;
+        // cout<<curr->val<<"&";
+        dummy->next=dummy->next->next;
+        return head;
     }
 };
