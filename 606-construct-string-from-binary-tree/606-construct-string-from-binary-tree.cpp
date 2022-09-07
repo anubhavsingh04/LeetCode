@@ -14,27 +14,27 @@ class Solution {
 public:
     void dfs(TreeNode*root,string &s)
     {
-        if(!root||(!root->left && !root->right)) return;
+        if(!root) return;
+        s+=to_string(root->val);
         if(root->left==NULL && root->right!=NULL)
         {
             s+="()";
         }
         if(root->left)
         {
-            s+='('+to_string(root->left->val);
+            s+='(';
             dfs(root->left,s);
             s+=')';
         }
         if(root->right)
         {
-            s+='('+to_string(root->right->val);
+            s+='(';
             dfs(root->right,s);
             s+=')';
         }
     }
     string tree2str(TreeNode* root) {
-        if(!root) return "";
-        string ans=to_string(root->val);
+        string ans="";
         dfs(root,ans);
         return ans;
     }
