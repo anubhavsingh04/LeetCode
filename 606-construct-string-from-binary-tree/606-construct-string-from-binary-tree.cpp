@@ -11,33 +11,30 @@
  */
 class Solution {
 public:
-    void solve(TreeNode*root,string &ans)
+    void dfs(TreeNode*root,string &s)
     {
-        if(!root||(!root->left)&&(!root->right))
-            return;
-        if(!root->left&&root->right)
+        if(!root||(!root->left && !root->right)) return;
+        if(!root->left && root->right)
         {
-            ans+="()";
+            s+="()";
         }
         if(root->left)
         {
-            ans+="("+to_string(root->left->val);
-            solve(root->left,ans);
-            ans+=")";
+            s+='('+to_string(root->left->val);
+            dfs(root->left,s);
+            s+=')';
         }
         if(root->right)
         {
-            ans+="("+to_string(root->right->val);
-            solve(root->right,ans);
-            ans+=")";
+            s+='('+to_string(root->right->val);
+            dfs(root->right,s);
+            s+=')';
         }
-        return;
     }
     string tree2str(TreeNode* root) {
-        string ans="";
-        if(!root) return ans;
-        ans+=to_string(root->val);
-        solve(root,ans);
+        if(!root) return "";
+        string ans=to_string(root->val);
+        dfs(root,ans);
         return ans;
     }
 };
