@@ -9,12 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// we will add () if leftdoes not exist and righ child exist i.e. root->left==NULL && root->right!=NULL
 class Solution {
 public:
     void dfs(TreeNode*root,string &s)
     {
         if(!root||(!root->left && !root->right)) return;
-        if(!root->left && root->right)
+        if(root->left==NULL && root->right!=NULL)
         {
             s+="()";
         }
