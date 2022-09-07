@@ -11,14 +11,13 @@
  */
 class Solution {
 public:
-    string solve(TreeNode*root,unordered_map<string,int>&m,vector<TreeNode*>&ans)
+    string dfs(TreeNode*root,unordered_map<string,int>&m,vector<TreeNode*>&ans)
     {
         if(!root) return "*";
-        string left=solve(root->left,m,ans);
-        string right=solve(root->right,m,ans);
-        string s=to_string(root->val)+"*"+left+"*"+right; 
-        // [2,1,11,11,null,1] output will come [[11,1]] * needed to avoid this 
-        // but correct output is []
+        string s="";
+        string left=dfs(root->left,m,ans);
+        string right=dfs(root->right,m,ans);
+        s+=to_string(root->val)+'*'+left+'*'+right;
         if(m[s]==1)
         {
             ans.push_back(root);
@@ -27,9 +26,9 @@ public:
         return s;
     }
     vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
-        vector<TreeNode*>ans;
         unordered_map<string,int>m;
-        solve(root,m,ans);
+        vector<TreeNode*>ans;
+        dfs(root,m,ans);
         return ans;
     }
 };
