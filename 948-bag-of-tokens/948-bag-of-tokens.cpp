@@ -5,7 +5,6 @@ public:
         sort(tokens.begin(),tokens.end());
         while(i<=j)
         {
-           
             if(power>=tokens[i])
             {
                 power-=tokens[i++];
