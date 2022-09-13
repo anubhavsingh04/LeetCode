@@ -11,7 +11,16 @@
  */
 class Solution {
 public:
+    void dfs(TreeNode*root,int &ans)
+    {
+        if(root) ans++;
+        if(root->left) dfs(root->left,ans);
+        if(root->right) dfs(root->right,ans);
+    }
     int countNodes(TreeNode* root) {
-        return root == NULL ? 0 : countNodes(root->left) + countNodes(root->right) + 1;
+        if(!root) return 0;
+        int ans=0;
+        dfs(root,ans);
+        return ans;
     }
 };
