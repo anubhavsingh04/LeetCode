@@ -1,24 +1,20 @@
 class Solution {
 public:
-    vector<vector<int>> dp;
-    
-    int solve(int i, int n, int j, vector<int> &nums, vector<int> &M){
-        
-        if (j == M.size()) return 0;
-        if (dp[i][j] != INT_MIN) return dp[i][j];
-        
-        // Left Side
-        int left = solve(i + 1, n, j + 1, nums, M) + (nums[i] * M[j]);
-        
-        // Right Side
-        int right = solve(i, n, j + 1, nums, M) + (nums[(n - 1) - (j - i)] * M[j]);
-        
-        return dp[i][j] = max(left, right);
+    int solve(int i,int k, vector<int>&nums,vector<int>& multipliers,vector<vector<int>>&dp)
+    {
+         if(k>=multipliers.size())return 0;
+          int j=nums.size()-(k-i)-1;
+         if(dp[k][i]!=INT_MIN)return (dp[k][i]);
+          int ans=nums[i]*multipliers[k]+solve(i+1,k+1,nums,multipliers,dp);
+               ans=max(ans,nums[j]*multipliers[k]+solve(i,k+1,nums,multipliers,dp));
+          return dp[k][i]=ans;
     }
-    
-    int maximumScore(vector<int>& nums, vector<int>& M) {   
-        int n = nums.size(), m = M.size();
-        dp.resize(m + 1, vector<int>(m + 1, INT_MIN));
-        return solve(0, n, 0, nums, M);
+    int maximumScore(vector<int>& nums, vector<int>& multipliers) {
+        
+        int n=nums.size(),m=multipliers.size();
+        vector<vector<int>>dp(m+1,vector<int>(m+1,INT_MIN));
+        int i=0,j=n-1;
+        return solve(i,0,nums,multipliers,dp);
+        
     }
 };
