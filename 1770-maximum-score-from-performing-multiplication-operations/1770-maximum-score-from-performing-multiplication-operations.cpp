@@ -1,20 +1,22 @@
 class Solution {
 public:
-    int solve(int i,int k, vector<int>&nums,vector<int>& multipliers,vector<vector<int>>&dp)
+    vector<vector<int>>dp;
+    int findscore(int idx,int left,int right,vector<int>&nums,vector<int>&multipliers)
     {
-         if(k>=multipliers.size())return 0;
-          int j=nums.size()-(k-i)-1;
-         if(dp[k][i]!=INT_MIN)return (dp[k][i]);
-          int ans=nums[i]*multipliers[k]+solve(i+1,k+1,nums,multipliers,dp);
-               ans=max(ans,nums[j]*multipliers[k]+solve(i,k+1,nums,multipliers,dp));
-          return dp[k][i]=ans;
+        if(idx>=multipliers.size())
+        {
+            return 0;
+        }
+        if(dp[idx][left]!=INT_MIN) return dp[idx][left];
+        int l= multipliers[idx]*nums[left] + findscore(idx+1,left+1,right,nums,multipliers);
+        int r= multipliers[idx]*nums[right]+findscore(idx+1,left,right-1,nums,multipliers);
+        return dp[idx][left]=max(l,r);
     }
     int maximumScore(vector<int>& nums, vector<int>& multipliers) {
-        
-        int n=nums.size(),m=multipliers.size();
-        vector<vector<int>>dp(m+1,vector<int>(m+1,INT_MIN));
-        int i=0,j=n-1;
-        return solve(i,0,nums,multipliers,dp);
-        
+        int idx=0;
+        int left=0,right=nums.size()-1;
+        int m=multipliers.size();
+        dp.resize(m+1,vector<int>(m+1,INT_MIN));
+        return findscore(idx,left,right,nums,multipliers);
     }
 };
