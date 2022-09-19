@@ -1,6 +1,5 @@
 class Solution {
 public:
-    
     int minimumTotal(vector<vector<int>>& triangle) {
         int minSum = INT_MAX;
           int h=triangle.size(),j;
@@ -16,11 +15,7 @@ public:
                  else
                  v[i][j]=min(v[i-1][j-1],v[i-1][j])+triangle[i][j];
              }
-              
          }
-         
-        return *min_element(v[h-1].begin(),v[h-1].end());
-         
-        
+        return *min_element(v[h-1].begin(),v[h-1].end()); 
     }
 };
