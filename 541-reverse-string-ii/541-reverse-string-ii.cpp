@@ -33,15 +33,7 @@ public:
         int i=0;
         while( i<s.size())
         {
-            if(i+k<n)
-            {
-                 reverse(s.begin()+i,s.begin()+i+k);
-            }
-            else 
-            {
-                reverse(s.begin()+i,s.end());
-            }
-            // reverse(s.begin()+i,s.begin()+i+k);
+            reverse(s.begin()+i,min(s.begin()+i+k,s.end()));
             i+=2*k;
             
         }
