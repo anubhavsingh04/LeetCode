@@ -9,29 +9,22 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-// O(n^2) 
-// solve will find all possible path including the 
-// then same function we will call for left and right subtree 
-
 class Solution {
 public:
     int ans=0;
-    void solve(TreeNode*root,int targetsum,long long currsum)
+    void dfs(TreeNode*root,int &target,long  long sum)
     {
         if(!root) return;
-        currsum+=root->val;
-        if(currsum==targetsum)
-            ans++;
-        solve(root->left,targetsum,currsum);
-        solve(root->right,targetsum,currsum);
-            
+        sum+=root->val;
+        if(sum==target) ans++;
+        dfs(root->left,target,sum);
+        dfs(root->right,target,sum);
     }
-    int pathSum(TreeNode* root, int targetSum) {
+    int pathSum(TreeNode* root, int target) {
         if(!root) return 0;
-        solve(root,targetSum,0);
-        pathSum(root->left,targetSum);
-        pathSum(root->right,targetSum);
+        dfs(root,target,0LL);
+        pathSum(root->left,target);
+        pathSum(root->right,target);
         return ans;
     }
 };
