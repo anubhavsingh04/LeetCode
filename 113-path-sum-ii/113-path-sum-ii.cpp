@@ -9,31 +9,25 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-// Backtracking +recursion
-
 class Solution {
 public:
-    vector<vector<int>>ans;
-    void solve(TreeNode*root,int &sum,int targetSum,vector<int>&tmp)
+    void dfs(TreeNode*root,int target,int sum,vector<int>v,vector<vector<int>>&ans)
     {
         if(!root) return;
         sum+=root->val;
-        tmp.push_back(root->val);
-        if(root->left==NULL && root->right==NULL && sum==targetSum)
+        v.push_back(root->val);
+        if(!root->left && !root->right && sum==target)
         {
-            ans.push_back(tmp);
+            ans.push_back(v);
         }
-        solve(root->left,sum,targetSum,tmp);
-        solve(root->right,sum,targetSum,tmp);
-        sum-=root->val;
-        tmp.pop_back();
-        
+        dfs(root->left,target,sum,v,ans);
+        dfs(root->right,target,sum,v,ans);
     }
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    vector<vector<int>> pathSum(TreeNode* root, int target) {
+        vector<vector<int>>ans;
+        vector<int>v;
         int sum=0;
-        vector<int>tmp={};
-        solve(root,sum,targetSum,tmp);
+        dfs(root,target,sum,v,ans);
         return ans;
     }
 };
