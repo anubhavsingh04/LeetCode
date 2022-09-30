@@ -1,39 +1,25 @@
-// Josephus problem 
-// class Solution {
-// public:
-    
-//     int findTheWinner(int n, int k) {
-//         if(n==1) return 1;
-//         else
-//         {
-//             int tmp=findTheWinner(n-1,k);
-//             int ans=(tmp+k-1)%n+1;
-//             return ans;
-//         }
-//     }
-// };
-
 class Solution {
 public:
-    void solve(int k,vector<int>v,int &ans,int index){
+    void solve(int k,int &ans,int idx,vector<int>&v)
+    {
         if(v.size()==1){
             ans=v[0];
             return;
         }
-        index=(index+k)%(v.size());
-        v.erase(v.begin()+index);
-        solve(k,v,ans,index);
-        return;
+        idx=(idx+k)%v.size();
+        v.erase(v.begin()+idx);
+        solve(k,ans,idx,v);
     }
-    
     int findTheWinner(int n, int k) {
-        vector<int>v(n);
-        for(int i=0;i<n;i++){
-            v[i]=i+1;
-        }
         k--;
-        int ans=-1;
-        solve(k,v,ans,0);
+        vector<int>v(n);
+        for(int i=0;i<n;i++)
+        {
+             v[i]=i+1;
+        }
+        int idx=0;
+        int ans=0;
+        solve(k,ans,0,v);
         return ans;
     }
 };
