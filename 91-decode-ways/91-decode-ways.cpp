@@ -1,21 +1,21 @@
 class Solution {
 public:
+    vector<int>dp;
+    int solve(int idx,string &s,vector<int>&dp)
+    {
+        if(dp[idx]!=-1) return dp[idx];
+        if(idx==s.size()) return 1;
+        if(s[idx]=='0') return 0;
+        if(idx==s.size()-1) return 1;
+        string tmp=s.substr(idx,2);
+        int op1=solve(idx+1,s,dp);
+        int op2=(stoi(tmp)>=1 && stoi(tmp)<=26)?solve(idx+2,s,dp):0;
+        return dp[idx]=op1+op2;
+    }
     int numDecodings(string s) {
-        if(s[0]=='0'||s.empty())
-            return 0;
-        int decodeuptoprev_idx=1,decodeuptocurr_idx=1,prev;
-        // decodeuptoprev_idx means no of ways to decode upto index i-1
-        // decodeuptocurr_idx means no of ways to decode upto index i
-        // prev is to store decodeuptocurridx in each iteration
-        for(int i=1;i<s.size();i++)
-        {
-            prev=decodeuptocurr_idx;
-            if(s[i]=='0') 
-                decodeuptocurr_idx=0;
-            if(s[i-1]=='1'||(s[i-1]=='2'&&s[i]<'7'))
-                decodeuptocurr_idx+=decodeuptoprev_idx;
-            decodeuptoprev_idx=prev;
-        }
-        return decodeuptocurr_idx;
+        vector<int>dp(s.size()+1,-1);
+         int ans=solve(0,s,dp);
+        return ans;
+        
     }
 };
