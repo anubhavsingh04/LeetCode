@@ -3,13 +3,13 @@ public:
     #define mod 1000000007 
     int nways(int dice,int face,int target,vector<vector<int>>&dp)
     {
-        if(target<0) return 0;
-        if(dice==0 && target==0) return 1;
-        if(dice==0 && target!=0) return 0;
-        if(dice!=0 && target==0) return 0;
-        
+        // if(target<0) return 0;
         // if(dice==0 && target==0) return 1;
-        // if(dice<0 || target<0) return 0;
+        // if(dice==0 && target!=0) return 0;
+        // if(dice!=0 && target==0) return 0;
+        
+        if(dice==0 && target==0) return 1;
+        if(dice<0 || target<0) return 0;
         
         if(dp[dice][target]!=-1) return dp[dice][target];
         
