@@ -9,11 +9,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-// Using recursion right left then modify the root
+
+// Using recursion: right left then modify the root
 
 class Solution {
 public:
-    TreeNode*root=root,*prev=NULL;
+    TreeNode*prev=NULL;
     void flatten(TreeNode* root) {
         if(!root) return;
         flatten(root->right);
