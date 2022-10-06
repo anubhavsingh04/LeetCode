@@ -5,7 +5,7 @@ public:
         for(auto &word:sentences)
         {
             int x=count(word.begin(),word.end(),' ');
-            ans=max(ans,x+1);
+            ans=max(ans,x+1); // no of words=no of spaces+1
         }
         return ans;
     }
