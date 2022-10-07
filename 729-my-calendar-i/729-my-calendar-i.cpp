@@ -1,14 +1,14 @@
 class MyCalendar {
-    unordered_map<int,int>m;
 public:
+    unordered_map<int,int>m;
     MyCalendar() {
         
     }
     
     bool book(int start, int end) {
-        for(auto it=m.begin();it!=m.end();it++)
+        for(auto &i:m)
         {
-            if(!(it->first>=end||it->second<=start)) return false ;
+            if(!(start>=i.second || end<=i.first)) return false;
         }
         m[start]=end;
         return true;
