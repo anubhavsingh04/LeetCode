@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    bool dfs(TreeNode*root,int k,map<int,int>&m)
+    bool dfs(TreeNode*root,int k,unordered_map<int,int>&m)
     {
         if(!root) return false;
         if(m.find(k-root->val)!=m.end())
@@ -22,7 +22,7 @@ public:
         return dfs(root->left,k,m)||dfs(root->right,k,m);
     }
     bool findTarget(TreeNode* root, int k) {
-        map<int,int>m;
+        unordered_map<int,int>m;
         return dfs(root,k,m);
     }
 };
