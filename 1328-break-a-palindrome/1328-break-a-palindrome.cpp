@@ -1,36 +1,17 @@
 class Solution {
 public:
-    bool ispalindrome(string &s)
-    {
-        int i=0,j=s.size()-1;
-        while(i<j)
-        {
-            if(s[i++]!=s[j--]) return false;
-        }
-        return true;
-    }
-    string breakPalindrome(string s) {
-        int n=s.size();
+    string breakPalindrome(string palindrome) {
+        int n=palindrome.size();
         if(n==1) return "";
-        int i=0;
-        while(i<n)
+        for(int i=0;i<n/2;i++)
         {
-            if(s[i]!='a')
+            if(palindrome[i]!='a')
             {
-                string tmp=s;
-                tmp[i]='a';
-                if(!ispalindrome(tmp))
-                {
-                    s[i]='a';
-                    break;
-                }
+                palindrome[i]='a';
+                return palindrome;
             }
-            i++;
         }
-        if(i==n)
-        {
-            s[n-1]='b';
-        }
-        return s;
+        palindrome[n-1]='b';
+        return palindrome;
     }
 };
