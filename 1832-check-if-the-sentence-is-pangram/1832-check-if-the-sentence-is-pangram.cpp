@@ -1,11 +1,11 @@
 class Solution {
 public:
-    bool checkIfPangram(string sentence) {
-        unordered_set<char>s;
-        for(auto &i:sentence)
+    bool checkIfPangram(string s) {
+        unordered_set<char>st;
+        for(auto &i:s)
         {
-            s.insert(i);
+            st.insert(i);
         }
-        return s.size()==26;
+        return st.size()==26;
     }
 };
