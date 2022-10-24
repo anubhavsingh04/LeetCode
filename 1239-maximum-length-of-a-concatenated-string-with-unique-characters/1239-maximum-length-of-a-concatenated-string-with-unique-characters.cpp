@@ -1,28 +1,29 @@
 class Solution {
 public:
-    int ans=0;
-     bool unique(string str)
+    bool unique(string &s)
     {
         set<char>st;
-        for(auto ch:str)
+        for(auto &ch:s)
         {
-            if(st.find(ch)!=st.end()) return false;
+            if(st.count(ch)) return false;
             st.insert(ch);
         }
         return true;
     }
-    void rec(string s,vector<string>&arr,int idx)
+    void rec(string s,int idx,vector<string>&arr,int n,int &ans)
     {
         if(!unique(s)) return;
         int sz=s.size();
         ans=max(ans,sz);
-        for(int i=idx;i<arr.size();i++)
-        {
-            rec(s+arr[i],arr,i+1);
-        }
+        
+        if(idx>=n) return ;
+        
+        rec(s+arr[idx],idx+1,arr,n,ans); // take 
+        rec(s,idx+1,arr,n,ans); // not take
     }
     int maxLength(vector<string>& arr) {
-        rec("",arr,0);
+        int n=arr.size(),ans=0;
+        rec("",0,arr,n,ans);
         return ans;
     }
 };
