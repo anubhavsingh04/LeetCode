@@ -1,6 +1,6 @@
 // unbounded knapsack
-// dp[i][j]=dp[i][j-coins[i-1]] means we are picking the cirr coin but we can the same coin again 
-// so  we are no decrementing i
+// dp[i][j]=dp[i][j-coins[i-1]]  picking the curr coin  but we can the pick same coin again 
+// so  we are not decrementing i
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
