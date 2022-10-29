@@ -12,20 +12,23 @@ public:
         int n=mat.size();
         int m=mat[0].size();
         int ans=0;
-        vector<vector<int>>dp(n,vector<int>(m,-1));
-        int max_area=0;
-        for(int i = 0; i < n; i++)
+        vector<vector<int>>dp(n+1,vector<int>(m+1,0));
+     
+        int side=0;
+        for(int i = 1; i <= n; i++)
         {
-            for(int j = 0; j < m; j++)
+            for(int j = 1; j <= m; j++)
             {
-                if(mat[i][j] == '1')
+                if(mat[i-1][j-1] == '1')
                 {
-                    int side = recur(mat,i,j,n,m,ans,dp);
-                    int area = side * side;
-                    max_area = max(max_area, area);
+                
+                   dp[i][j]=1+min({dp[i][j-1],dp[i-1][j],dp[i-1][j-1]});
+                    side=max(side,dp[i][j]);
                 }
+                else
+                    dp[i][j]=0;
             }
         }
-        return max_area;
+        return side*side;
     }
 };
