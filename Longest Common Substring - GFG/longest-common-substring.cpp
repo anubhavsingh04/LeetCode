@@ -13,12 +13,14 @@ class Solution{
         if(dp[m][n]!=-1) return dp[m][n];
         int take=0;
         if(s1[m-1]==s2[n-1]) 
+        {
             take=1+rec(s1,s2,m-1,n-1,dp,ans);
+        }
     
-            int l=rec(s1,s2,m,n-1,dp,ans);
-            int r=rec(s1,s2,m-1,n,dp,ans);
-            ans=max(ans,take);
-            return dp[m][n]=take;
+        int l=rec(s1,s2,m,n-1,dp,ans);
+        int r=rec(s1,s2,m-1,n,dp,ans);
+        ans=max(ans,take);
+        return dp[m][n]=take;
     }
     int longestCommonSubstr (string s1, string s2, int m, int n)
     {
