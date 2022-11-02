@@ -1,7 +1,6 @@
 # Binary Search
 ## Easy
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a sorted array of size <strong>N</strong> and an integer <strong>K</strong>, find the position at which <strong>K</strong> is present in the array using binary search.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a sorted array of size <strong>N</strong> and an integer <strong>K</strong>, find the position at which <strong>K</strong> is present in the array using binary search.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -38,5 +37,4 @@ You dont need to read input or print anything. Complete the function <strong>bin
 	<li><span style="font-size:18px">1 &lt;= arr[i] &lt;= 10<sup>6</sup></span></li>
 	<li><span style="font-size:18px">1 &lt;= K &lt;= 10<sup>6</sup></span></li>
 </ul>
- <p></p>
-            </div>
+</div>
