@@ -26,34 +26,34 @@ public:
         {
             if(str1[i-1]==str2[j-1])
             {
-                s+=str1[i-1];
+                s=str1[i-1]+s;
                 i--,j--;
             }
             else 
             {
                 if(dp[i][j-1]>dp[i-1][j])
                 {
-                    s+=str2[j-1];
+                    s=str2[j-1]+s;
                     j--;
                 }
                 else
                 {
-                    s+=str1[i-1];
+                    s=str1[i-1]+s;
                     i--;
                 }
             }
         }
         while(i>0)
         {
-            s+=str1[i-1];
+            s=str1[i-1]+s;
             i--;
         }
         while(j>0)
         {
-            s+=str2[j-1];
+            s=str2[j-1]+s;
             j--;
         }
-        reverse(s.begin(),s.end());
+        // reverse(s.begin(),s.end());
         return s;
     }
 };
