@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int LCS(string a,string b)
+    int LCS(string &a,string &b)
     {
       int m=a.size();
       int n=b.size();
