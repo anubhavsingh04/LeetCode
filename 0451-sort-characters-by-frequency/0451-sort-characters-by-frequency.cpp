@@ -1,25 +1,48 @@
+// class Solution {
+// public:
+//     static bool cmp(pair<int,char>a,pair<int,char>b)
+//     {
+//         return a.first>b.first;
+//     }
+//     string frequencySort(string s) {
+//         unordered_map<char,int>mp;
+//         for(auto i:s)
+//         {
+//             mp[i]++;
+//         }
+//         vector<pair<int,char>>v;
+//         for(auto i:mp)
+//         {
+//             v.push_back({i.second,i.first});
+//         }
+//         sort(v.begin(),v.end(),cmp);
+//         string ans="";
+//         for(auto i:v)
+//         {
+//             ans+=string(i.first,i.second);
+//         }
+//         return ans;
+//     }
+// };
+
+
 class Solution {
 public:
-    static bool cmp(pair<int,char>a,pair<int,char>b)
-    {
-        return a.first>b.first;
-    }
     string frequencySort(string s) {
         unordered_map<char,int>mp;
-        for(auto i:s)
+        for(auto &i:s) mp[i]++;
+        priority_queue<pair<int,int>>pq;
+        for(auto &i:mp)
         {
-            mp[i]++;
+            pq.push({i.second,i.first});
         }
-        vector<pair<int,char>>v;
-        for(auto i:mp)
-        {
-            v.push_back({i.second,i.first});
-        }
-        sort(v.begin(),v.end(),cmp);
         string ans="";
-        for(auto i:v)
+        while(!pq.empty())
         {
-            ans+=string(i.first,i.second);
+            int cnt=pq.top().first;
+            char ch=pq.top().second;
+            pq.pop();
+            ans+=string(cnt,ch);
         }
         return ans;
     }
