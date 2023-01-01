@@ -34,3 +34,4 @@ Complete the function&nbsp;<strong>knapSack()</strong>&nbsp;which takes maximum 
 <span style="font-size:18px">1 ≤ wt[i] ≤ 1000</span><br>
 <span style="font-size:18px">1 ≤ v[i] ≤ 1000</span></p>
 </div>
+En
