@@ -17,14 +17,10 @@ public:
         int ans=INT_MAX;
         for(int k=i;k<j;k++)
         {
-            if(!ispalindrome(s,i,k)) continue;
-            int left=0,right=0;
-            if(dp[i][k]!=-1) left= dp[i][k];
-            else dp[i][k]=left=solve(s,i,k);
-            if(dp[k+1][j]!=-1) right=dp[k+1][j];
-            else dp[k+1][j]=right=solve(s,k+1,j);
-            int tmpans=1+left+right;
-            ans=min(ans,tmpans);
+            if(ispalindrome(s,i,k)){
+                int tmpans=1+solve(s,k+1,j);
+                ans=min(ans,tmpans);
+            }
         } 
         return dp[i][j]=ans;
     }
