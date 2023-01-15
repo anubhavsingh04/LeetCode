@@ -1,77 +1,34 @@
-class UnionFind {
-    private:
-        vector<int> id, rank;
-        int cnt;
-    public:
-        UnionFind(int cnt) : cnt(cnt) {
-            id = vector<int>(cnt);
-            rank = vector<int>(cnt, 0);
-            for (int i = 0; i < cnt; ++i) id[i] = i;
-        }
-        int find(int p) {
-            if (id[p] == p) return p;
-            return id[p] = find(id[p]);
-        }
-        bool connected(int p, int q) { 
-            return find(p) == find(q); 
-        }
-        void connect(int p, int q) {
-            int i = find(p), j = find(q);
-            if (i == j) return;
-            if (rank[i] < rank[j]) {
-                id[i] = j;  
-            } else {
-                id[j] = i;
-                if (rank[i] == rank[j]) rank[j]++;
-            }
-            --cnt;
-        }
-};
-
 class Solution {
 public:
-    int numberOfGoodPaths(vector<int>& vals, vector<vector<int>>& edges) {
-        int N = vals.size(), goodPaths = 0;
-        vector<vector<int>> adj(N);
-        map<int, vector<int>> sameValues;
-        
-        for (int i = 0; i < N; i++) {
-            sameValues[vals[i]].push_back(i);
-        }
-        
-        for (auto &e : edges) {
-            int u = e[0], v = e[1];
-            
-            if (vals[u] >= vals[v]) {
-                adj[u].push_back(v);
-            } else if (vals[v] >= vals[u]) {
-                adj[v].push_back(u);
-            }
-        }
-        
-        UnionFind uf(N);
-        
-        for (auto &[value, allNodes] : sameValues) {
-            
-            for (int u : allNodes) {
-                for (int v : adj[u]) {
-                    uf.connect(u, v);
-                }
-            }
-            
-            unordered_map<int, int> group;
-            
-            for (int u : allNodes) {
-                group[uf.find(u)]++;
-            }
-            
-            goodPaths += allNodes.size();
-            
-            for (auto &[_, size] : group) {
-                goodPaths += (size * (size - 1) / 2);
-            }
-        }
-        
-        return goodPaths;
-    }
+	int find(vector<int>& y,int i) {
+		if(i==y[i]) return i;
+		y[i]=find(y,y[i]);
+		return y[i];
+	}
+	int numberOfGoodPaths(vector<int>& vals, vector<vector<int>>& edges) {
+        int n = vals.size(),m=edges.size(),ans=0;
+		vector<vector<int>> x(n);
+		vector<int> y(n);
+		for(int i=0;i<n;i++){
+			y[i]=i;
+			x[i]={vals[i],1};
+		}
+        sort(edges.begin(),edges.end(),[&](vector<int>& a,vector<int>& b){
+	    	return max(vals[a[0]],vals[a[1]])<max(vals[b[0]],vals[b[1]]);
+		});
+		for(int i=0;i<m;i++){
+			int a=find(y,edges[i][0]);
+			int b=find(y,edges[i][1]);
+			if(x[a][0]!=x[b][0]){
+				if(x[a][0]>x[b][0]) y[b]=a;
+				else y[a]=b;
+			}
+			else{
+				y[a]=b;
+				ans+=x[a][1]*x[b][1];
+				x[b][1]+=x[a][1];
+			}
+		}
+		return ans+n;
+	}
 };
