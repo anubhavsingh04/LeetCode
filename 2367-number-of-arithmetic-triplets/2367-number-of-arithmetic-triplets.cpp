@@ -41,7 +41,7 @@ public:
         }
         for(auto &i:nums)
         {
-            if(i+diff>=0 && m[i+diff] && m[i+2*diff])
+            if(m[i+diff] && m[i+2*diff])
                 ans++;
         }
         return ans;
