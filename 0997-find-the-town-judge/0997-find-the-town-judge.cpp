@@ -1,15 +1,15 @@
 class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) {
-        vector<int>trusted(n+1,0);
+        unordered_map<int,int>mp1,mp2;
         for(auto &i:trust)
         {
-            trusted[i[0]]--;
-            trusted[i[1]]++;
+            mp1[i[0]]++;
+            mp2[i[1]]++;
         }
         for(int i=1;i<=n;i++)
         {
-            if(trusted[i]==n-1) return i;
+            if(mp1[i]==0 && mp2[i]==n-1) return i;
         }
         return -1;
     }
