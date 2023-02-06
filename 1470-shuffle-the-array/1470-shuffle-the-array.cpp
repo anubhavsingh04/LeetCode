@@ -1,12 +1,18 @@
 class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
-        vector<int>ans;
-        for(int i=0;i<n;i++)
+        int maxi=1001;
+        for(int i=n;i<2*n;i++)
         {
-            ans.push_back(nums[i]);
-            ans.push_back(nums[n+i]);
+            nums[i]=nums[i]*maxi+nums[i-n];
         }
-        return ans;
+        int idx=0;
+        for(int i=n;i<2*n;i++)
+        {
+            nums[idx]=nums[i]%maxi;
+            nums[idx+1]=nums[i]/maxi;
+            idx+=2;
+        }
+        return nums;
     }
 };
