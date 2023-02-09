@@ -6,8 +6,8 @@ public:
         }
         if(dp[curr]!=-1) return dp[curr];
         long long ans=INT_MAX;
-        for(int i=1; i<=nums[curr]; i++){
-            ans=min(ans, 1+rec(curr+i,nums,n,dp));
+        for(int i=curr+1; i<=curr+nums[curr]; i++){
+            ans=min(ans, 1+rec(i,nums,n,dp));
         }
         return dp[curr]=ans;
     }
