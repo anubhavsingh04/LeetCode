@@ -10,16 +10,18 @@ using namespace std;
 class Solution{
 public:
     int inSequence(int a, int b, int c){
-        if(a==b) return 1;
+        // if(a==b) return 1;
         
         // if((b>a and c>0) or (b<a and c<0)) {
         //     if(abs(b-a)%abs(c)==0) return 1;
         // }
         // return 0;
-         //long long int x=(b-a)*c;
-        // cout<<x<<endl;
-        if(c==0||((b-a)>0 && c<0) || ((b-a)<0 && c>0)|| (b-a)%c!=0) return 0;
-        return 1;
+        
+        // if(a==b) return 1;
+        // if(c==0||((b-a)>0 && c<0) || ((b-a)<0 && c>0)|| (b-a)%c!=0) return 0;
+        // return 1;
+        if(c==0) return a==b;
+        return ((b-a)%c==0 && (1+(b-a)/c)>0);
     }
 };
 
