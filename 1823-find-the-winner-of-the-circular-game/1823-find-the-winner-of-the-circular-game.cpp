@@ -1,25 +1,33 @@
 class Solution {
 public:
-    void solve(int k,int &ans,int idx,vector<int>&v)
+    int rec(int idx,int k,vector<int>&v)
     {
-        if(v.size()==1){
-            ans=v[0];
-            return;
-        }
+        if(v.size()<=1) return v[0];
         idx=(idx+k)%v.size();
         v.erase(v.begin()+idx);
-        solve(k,ans,idx,v);
+        return rec(idx,k,v);
     }
     int findTheWinner(int n, int k) {
         k--;
-        vector<int>v(n);
-        for(int i=0;i<n;i++)
-        {
-             v[i]=i+1;
-        }
-        int idx=0;
-        int ans=0;
-        solve(k,ans,0,v);
-        return ans;
+        vector<int>v;
+        for(int i=1;i<=n;i++)v.push_back(i);
+        return rec(0,k,v);
     }
 };
+
+// Iterative 
+
+// class Solution
+// {
+//     public:
+//     int josephus(int n, int k)
+//     {
+//         int i=1,ans=0;
+//         while(i<=n)
+//         {
+//             ans=(ans+k)%i;
+//             i++;
+//         }
+//         return ans+1;
+//     }
+// };
