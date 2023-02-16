@@ -11,19 +11,19 @@ using namespace std;
 class Solution {
   public:
     long long solve(int n, int k, vector<long long> geek) {
-        if(n<=k) return geek[n-1];
-        vector<long long>v(n);
+        // if(n<=k) return geek[n-1];
+        vector<long long>v(max(n,k)); // agr n<k hua to illegal memory access ho jayega 
         long long sum=0;
+        // cout<<"*"<<endl;
         for(int i=0;i<k;i++)
         {
             v[i]=geek[i];
             sum+=geek[i];
-            //  cout<<"*"<<endl;
         }
+         
         long long start=0;
         for(int i=k;i<n;i++)
         {
-           
             v[i]=sum;
             sum+=v[i];
             sum-=v[start++];
