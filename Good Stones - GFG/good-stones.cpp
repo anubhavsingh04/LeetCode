@@ -12,40 +12,45 @@ public:
     // 1 means bad index 
     // 2 means good index 
     int goodStones(int n,vector<int> &arr){
-        vector<int>dp(n,0);
-        for(int i=0;i<n;i++)
-        {
-            if(dp[i]==0)
-            {
-                int curr_idx=i;
-                int good=0;
-                while(dp[curr_idx]!=1)
-                {
-                    dp[curr_idx]=1;
-                    if(arr[curr_idx]==0) break;
-                    curr_idx=curr_idx+arr[curr_idx];
-                    if(curr_idx<0 || curr_idx>n-1 || dp[curr_idx]==2)
-                    {
-                        good=1;
-                        break;
-                    }
-                }
-                if(good)
-                {
-                    int tmp=i;
-                    while(tmp>=0 && tmp<n)
-                    {
-                        dp[tmp]=2;
-                        tmp+=arr[tmp];
-                    }
-                }
-            }
-        }
-        int ans=0;
-        for(int i=0;i<n;i++){
-            if(dp[i]==2) ans++;
-        }
-        return ans;
+    vector<int>vis(n,0);
+     for(int i = 0;i<n;i++)
+     {
+         if(vis[i]==0)
+         {
+             int curr = i;
+             int good=0;
+             while(vis[curr]!=1)
+             {
+                 
+                 vis[curr] = 1;
+                 if(arr[curr] == 0) break;
+                 curr += arr[curr];
+                 if(curr<0 || curr>n-1 || vis[curr]==2)
+                 {
+                     good=1;
+                     break;
+                 }
+             }
+             if(good)
+             {
+                 int  temp = i;
+                 while( temp >= 0 && temp < n)
+                 {
+                   vis[temp] = 2;
+                   temp +=arr[temp];
+                 }
+             }
+         }
+     }
+     int ans = 0;
+     for(int i = 0;i<n;i++)
+     {
+         if(vis[i] == 2)
+         {
+             ans++;
+         }
+     }
+     return ans;
     }  
 };
 
