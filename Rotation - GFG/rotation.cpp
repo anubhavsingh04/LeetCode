@@ -54,7 +54,7 @@ public:
                 ans=mid;
                 break;
             }
-            else if(arr[mid]>=arr[0]) { 
+            else if(arr[mid]>=arr[end]) { 
                 start=mid+1;
             }
             else {
