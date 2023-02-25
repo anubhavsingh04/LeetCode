@@ -18,22 +18,15 @@ class Solution {
                 i++;
                 j++;
             }
-            else if(isdigit(t[j]) && isalpha(s[i]))
+            else if(isdigit(t[j]))
             {
                 int cnt=0;
-                while(isdigit(t[j]))
+                while(j<t.size() && isdigit(t[j]))
                 {
                     cnt=(cnt*10+(t[j]-'0'));
                     j++;
-                    // cout<<cnt<<endl;
-                }
-                // cout<<cnt<<endl;
-                if(j==t.size()-1 && isdigit(t[j])) {
-                    if(n-i!=cnt) return 0;
                 }
                 i+=cnt;
-                // j++;
-                // cout<<s[i]<<" "<<t[j]<<endl;
                 if(s[i]!=t[j]) return 0;
             }
         }
