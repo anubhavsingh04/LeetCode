@@ -9,6 +9,7 @@ using namespace std;
 class Solution{
 public:	
     // kitni bar rotate hua hai vo depend krenga minimum element ke index pe 
+    // minimum element ka jo index hoga utni bar rotate hua hai
    // agr mid apne dono neighbour se chota hua to arr[mid] hi ans hoga 
    // nahi to min element hamesha unsoted array me lie krega 
    // so hame unsoted array me move krna hai
