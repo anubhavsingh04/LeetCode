@@ -25,8 +25,7 @@ public:
             int mid=(start+(end-start)/2);
             int prev=(mid-1+n)%n;
             int next=(mid+1)%n;
-            // cout<<start<<" "<<mid<<" "<<end<<" "<<arr[mid]<<endl;
-            
+
             if(arr[mid]<=arr[prev] && arr[mid]<=arr[next]) {
                 ans=mid;
                 break;
@@ -34,7 +33,7 @@ public:
             else if(arr[start]<=arr[mid]) { 
                 start=mid+1;
             }
-            else if(arr[mid]<=arr[end]){
+            else {
                 end=mid-1;
             }
         }
