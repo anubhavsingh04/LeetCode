@@ -1,17 +1,18 @@
 class Solution {
 public:
     int findKthPositive(vector<int>& arr, int k) {
-        int x=1;
-        set<int>st(arr.begin(),arr.end());
-        vector<int>v;
-        while(v.size()<k)
+        // no of missed element before each index is a[i]-(i+1)
+        int start=0,end=arr.size()-1;
+        while(start<=end)
         {
-            if(!st.count(x))
-            {
-                v.push_back(x);
+            int mid=start+(end-start)/2;
+            if((arr[mid]-(mid+1))<k){
+                start=mid+1;
             }
-            x++;
+            else {
+                end=mid-1;
+            }
         }
-        return v[k-1];
+        return start+k;
     }
 };
