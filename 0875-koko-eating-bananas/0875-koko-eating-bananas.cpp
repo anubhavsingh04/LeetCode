@@ -5,14 +5,8 @@ public:
         long long hour=0;
         for(int i=0;i<piles.size();i++)
         {
-            if(piles[i]%mid==0)
-            {
-                hour+=piles[i]/mid;
-            }
-            else 
-            {
-                hour+=(1+piles[i]/mid);
-            }
+            hour+=piles[i]/mid;
+            if(piles[i]%mid!=0) hour++;
         }
         return hour<=h;
     }
