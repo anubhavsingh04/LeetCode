@@ -17,7 +17,7 @@ class Solution{
             else if(arr[mid]<target) start=mid+1;
             else end=mid-1;
         }
-        if(start>=0 && start<n && abs(arr[start]-target)<abs(arr[end]-target)) return arr[start];
+        if(end>=0 && start<n && abs(arr[start]-target)<abs(arr[end]-target)) return arr[start];
         else if(end>=0 && end<n && abs(arr[start]-target)>abs(arr[end]-target)) return arr[end];
         else return max(arr[start],arr[end]);
     } 
