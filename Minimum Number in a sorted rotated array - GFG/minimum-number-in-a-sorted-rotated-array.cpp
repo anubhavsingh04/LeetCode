@@ -7,8 +7,17 @@ using namespace std;
 class Solution
 {
     public:
+    
+    // same as rotation question
+    
     //Function to find the minimum element in sorted and rotated array.
-    // min element hamesha unsorted part me hoga 
+    // kitni bar rotate hua hai vo depend krenga minimum element ke index pe 
+    // minimum element ka jo index hoga utni bar rotate hua hai
+   // agr mid apne dono neighbour se chota hua to arr[mid] hi ans hoga 
+   // nahi to min element hamesha unsoted array me lie krega 
+   // so hame unsoted array me move krna hai
+   // if a[start]<a[mid] means start to mid is sorted (do start=mid+1)
+   // if a[mid]<a[end] means mid to end is sorted (do end=mid-11)
     int minNumber(int arr[], int start, int end)
     {
         int n=end-start+1;
