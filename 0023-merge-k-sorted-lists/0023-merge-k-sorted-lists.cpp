@@ -14,30 +14,39 @@ public:
     {
         ListNode*dummy=new ListNode(0);
         ListNode*ptr=dummy;
-        while(l1&&l2)
+        
+        while(l1||l2)
         {
-            // if(l1 && l2)
-            // {
+            if(l1 && l2)
+            {
                 if(l1->val<l2->val)
                 {
-                    // ListNode*head=new ListNode(l1->val);
                     ptr->next=l1;
                     ptr=l1;
                     l1=l1->next;
                 }
                 else {
-                    // ListNode*head=new ListNode(l2->val);
                     ptr->next=l2;
                     ptr=l2;
                     l2=l2->next;
                 }
-            // }
+            }
+            else {
+                if(l1){
+                    ptr->next=l1;
+                    break;
+                }
+                else {
+                    ptr->next=l2;
+                    break;
+                }
+            }
         }
-        if(l1) ptr->next=l1;
-        if(l2) ptr->next=l2;
         return dummy->next;
     }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode*dummy=new ListNode(0);
+        ListNode*ptr=dummy;
         ListNode*head=NULL;
         for(int i=0;i<lists.size();i++)
         {
