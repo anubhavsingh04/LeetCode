@@ -9,48 +9,22 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    void solve(TreeNode*root,int tmp,int &ans)
+    void rec(TreeNode*root,int tmp,int &ans)
     {
         if(!root) return ;
-        tmp=(tmp*10+root->val);
-        
-        if(!root->left&&!root->right){
+        tmp=tmp*10+root->val;
+        if(!root->left&& !root->right) {
             ans+=tmp;
+            return;
         }
-        
-        solve(root->left,tmp,ans);
-        solve(root->right,tmp,ans);
+        rec(root->left,tmp,ans);
+        rec(root->right,tmp,ans);
     }
-    
     int sumNumbers(TreeNode* root) {
-        int ans=0;
-        if(!root) return ans;
-        solve(root,0,ans);
+        int ans=0,tmp=0;
+        rec(root,tmp,ans);
         return ans;
     }
 };
-
-// class Solution {
-// public:
-//     int solve(TreeNode*root,int ans)
-//     {
-//         if(!root) return 0;
-//         ans=ans*10+root->val;
-//         if(!root->left&&!root->right)
-//             return ans;
-//         int lh=solve(root->left,ans);
-//         int rh=solve(root->right,ans);
-//         ans =lh+rh;
-//         return ans;
-//         // return solve(root->left,ans)+solve(root->right,ans);
-//     }
-//     int sumNumbers(TreeNode* root) {
-//         int ans=0;
-//         if(!root) return ans;
-//         return solve(root,ans);
-//         // return ans;
-//     }
-// };
