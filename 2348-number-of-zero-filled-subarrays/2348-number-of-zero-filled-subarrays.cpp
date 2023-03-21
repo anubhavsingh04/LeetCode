@@ -5,16 +5,13 @@ public:
         int n=nums.size();
         for(int i=0;i<n;i++)
         {
-            cnt=0;
-            
-            while(i<n && nums[i]==0){
-                i++;
+            if(nums[i]==0) {
                 cnt++;
+                ans+=cnt;
             }
-            if(cnt>0)
-            i--;
-            ans+=(cnt*(cnt+1)/2);
-            cnt=0;
+            else {
+                cnt=0;
+            }
         }
         return ans;
     }
