@@ -1,20 +1,20 @@
 class Solution {
 public:
     long long zeroFilledSubarray(vector<int>& nums) {
-        for(int i=0;i<nums.size();i++){
-            nums[i]=abs(nums[i]);
-        }
-        long long ans=0,sum=0;
-        long long n=nums.size();
-        unordered_map<long long,long long>mp;
-        mp[0]=1;
+        long long ans=0,cnt=0;
+        int n=nums.size();
         for(int i=0;i<n;i++)
         {
-            sum+=nums[i];
-            if(mp.count(sum)){
-                ans+=mp[sum];
+            cnt=0;
+            
+            while(i<n && nums[i]==0){
+                i++;
+                cnt++;
             }
-            mp[sum]++;
+            if(cnt>0)
+            i--;
+            ans+=(cnt*(cnt+1)/2);
+            cnt=0;
         }
         return ans;
     }
