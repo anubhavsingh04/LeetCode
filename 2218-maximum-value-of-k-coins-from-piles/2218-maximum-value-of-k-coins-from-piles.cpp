@@ -17,10 +17,10 @@ public:
     
     int rec(vector<vector<int>>&piles,int idx,int k,vector<vector<int>>&dp)
     {
-        if(idx>=piles.size()) return 0;
-        if(dp[idx][k]!=-1) return dp[idx][k];
-        int ans=0;
-        ans=max(ans,rec(piles,idx+1,k,dp));
+        if(k==0||idx==piles.size()) return 0;
+        if(dp[k][idx]!=-1) return dp[k][idx];
+        int notpick=rec(piles,idx+1,k,dp);
+        int ans=INT_MIN;
         
         for(int x=0;x<piles[idx].size();x++)
         {
@@ -28,10 +28,8 @@ public:
             {
                 ans=max(ans,piles[idx][x]+rec(piles,idx+1,k-x-1,dp));
             }
-            else break;
         }
-        
-        return dp[idx][k]=ans;
+        return dp[k][idx]=max(ans,notpick);
     }
     
     int maxValueOfCoins(vector<vector<int>>& piles, int k) {
@@ -42,7 +40,7 @@ public:
                 piles[i][j]+=piles[i][j-1];
             }
         }
-        vector<vector<int>>dp(piles.size()+1,vector<int>(k+1,-1));
+        vector<vector<int>>dp(k+1,vector<int>(piles.size()+1,-1));
         return rec(piles,0,k,dp);
     }
 };
