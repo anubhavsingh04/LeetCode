@@ -12,39 +12,26 @@
 class Solution {
 public:
     TreeNode* replaceValueInTree(TreeNode* root) {
-        queue<pair<TreeNode*,TreeNode*>>q;
-        root->val=0;
-        TreeNode*dummy=new TreeNode(-1);
-        q.push({root,dummy});
-        while(!q.empty())
-        {
-            int size=q.size();
-            map<TreeNode*,vector<TreeNode*>>mp;
-            int levelsum=0;
-            for(int i=0;i<size;i++)
-            {
-                auto curr=q.front();
-                q.pop();
-                TreeNode*node=curr.first;
-                TreeNode*par=curr.second;
-                mp[par].push_back(node);
-                // cout<<node->val<<' '<<par->val<<endl;
-                levelsum+=node->val;
-                if(node->left) {
-                    q.push({node->left,node});
-                }
-                if(node->right) {
-                    q.push({node->right,node});
-                }
-            }
-            // cout<<levelsum<<endl;
-            for(auto &i:mp)
-            {
-                int samechild=0;
-                for(auto j:i.second) samechild+=j->val;
-                for(auto j:i.second) j->val=levelsum-samechild;
-            }
+    root->val = 0;
+    queue<TreeNode*> q;  q.push(root);
+    while(!q.empty()){
+        int n = q.size(), sum = 0;
+        vector<TreeNode*> buf;
+        while(n--){
+            TreeNode* node = q.front(); q.pop();
+            buf.push_back(node);
+            if(node->left) { q.push(node->left); sum += node->left->val; }
+            if(node->right){ q.push(node->right); sum += node->right->val; }
         }
-        return root;
+        for(auto node: buf){
+            int  t = sum;
+            if(node->left)  t -= node->left->val;
+            if(node->right) t -= node->right->val;
+            if(node->left)  node->left->val = t;
+            if(node->right) node->right->val = t;
+        }
+    }
+    return root;
     }
 };
+
