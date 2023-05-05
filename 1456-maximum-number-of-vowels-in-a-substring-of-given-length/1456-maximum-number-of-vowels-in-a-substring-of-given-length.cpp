@@ -1,10 +1,7 @@
 class Solution {
 public:
     int maxVowels(string s, int k) {
-        int n=s.size();
-        int ans=0;
-        int i=0,j=0;
-        int count=0;
+        int n=s.size(),ans=0,i=0,j=0,count=0;
         string x="aeiou";
         set<char>st(x.begin(),x.end());
         while(j<n)
