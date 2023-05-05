@@ -1,23 +1,30 @@
 class Solution {
 public:
-    
+    static bool isvowel(char ch)
+    {
+        string s="aeiou";
+        set<char>st(s.begin(),s.end());
+        return st.count(ch);
+    }
     int maxVowels(string s, int k) {
-        set<char>vowels={'a','e','i','o','u'};
-        int vc=0,l=0,ans=0,n=s.size(),r=0;
-        
-        auto check_vowel=[](char ch) {
-            return (ch=='a' or ch=='e' or ch=='i' or ch=='o' or ch=='u');
-        };
-        
-        while(r<n) {
-            if(r<k-1) {
-                if(check_vowel(s[r++])) vc++;
-            }else {
-                if(check_vowel(s[r++])) vc++;
-                ans=max(ans,vc);
-                if(check_vowel(s[l++])) vc--;
-            }
-            
+        int n=s.size();
+        int ans=0;
+        // if(k<s.size()) return 0;
+        int i=0,j=0;
+        int count=0;
+        while(j!=k)
+        {
+            if(isvowel(s[j])) count++;
+            j++;
+        }
+        ans=max(ans,count);
+        while(j<n)
+        {
+            if(!isvowel(s[i]) && isvowel(s[j])) count++;
+            if(isvowel(s[i]) && !isvowel(s[j])) count--;
+            ans=max(ans,count);
+            i++;
+            j++;
         }
         return ans;
     }
