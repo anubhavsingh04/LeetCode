@@ -14,8 +14,10 @@ public:
                 else if(nums[x]+nums[y]<target) x++;
                 else {
                     st.insert({nums[i],nums[x],nums[y]});
-                    x++;
-                    y--;
+                    int val1=nums[x];
+                    int val2=nums[y];
+                    while(x<n && nums[x]==val1) x++;
+                    while(y>=0 && nums[y]==val2) y--;
                 }
             }
         }
