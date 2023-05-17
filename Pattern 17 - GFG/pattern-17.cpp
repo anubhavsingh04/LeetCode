@@ -14,21 +14,9 @@ class Solution {
             for(int j=0;j<n-i-1;j++) cout<<' ';
             for(int j=0;j<2*i+1;j++)
             {
-                if(j<=i)
-                {
-                    cout<<ch;
-                    ch++;
-                    flag=1;
-                }
-                else 
-                {
-                    if(flag)
-                    {
-                        --ch;
-                        flag=0;
-                    }
-                    cout<<--ch;
-                }
+                cout<<ch;
+                if(j<(2*i+1)/2) ch++;
+                else ch--;
             }
             cout<<endl;
         }
