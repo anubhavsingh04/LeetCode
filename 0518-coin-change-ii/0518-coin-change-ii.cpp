@@ -1,27 +1,19 @@
-// unbounded knapsack
-// dp[i][j]=dp[i][j-coins[i-1]]  picking the curr coin  but we can the pick same coin again 
-// so  we are not decrementing i
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
+    int rec(int idx,int target,vector<int>&coins,vector<vector<int>>&dp)
+    {
+        if(idx==0) {
+            return target%coins[0]==0;
+        }
+        if(dp[idx][target]!=-1) return dp[idx][target];
+        int nottake=rec(idx-1,target,coins,dp);
+        int take=0;
+        if(coins[idx]<=target) take=rec(idx,target-coins[idx],coins,dp);
+        return  dp[idx][target]=take+nottake;
+    }
+    int change(int target, vector<int>& coins) {
         int n=coins.size();
-        vector<vector<int>>dp(n+1,vector<int>(amount+1,0));
-        for(int i=0;i<n+1;i++)
-        {
-            dp[i][0]=1;
-        }
-        for(int i=1;i<n+1;i++) // size 
-        {
-            for(int j=1;j<amount+1;j++) // amount 
-            {
-                if(coins[i-1]<=j) // pick or not pick
-                {
-                    dp[i][j]=(dp[i][j-coins[i-1]]+dp[i-1][j]); 
-                }
-                else
-                    dp[i][j]=(dp[i-1][j]);
-            }
-        }
-        return dp[n][amount];
+        vector<vector<int>>dp(n+1,vector<int>(target+1,-1));
+        return rec(n-1,target,coins,dp);
     }
 };
