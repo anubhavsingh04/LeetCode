@@ -10,7 +10,7 @@ public:
         for(int i=idx;i<nums.size();i++)
         {
             if(i>idx && nums[i]==nums[i-1]) continue;
-            // if(nums[i]>target) break;
+            if(nums[i]>target) break;
             
             op.push_back(nums[i]);
             sum+=nums[i];
