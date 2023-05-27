@@ -7,7 +7,7 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-// fibona
+// fibonacci series 
 vector<long long int>dp(100001 , 0);
 class Solution {
   private:
