@@ -1,1 +1,2 @@
-​
+all the element occouring twice will be at even and odd index paiwise
+after observing carefully agr mid odd hai then nums[mid]==nums[mid-1] barabar hona chahiye agr nhi hua matlab unique element left me hai aur agr barabar hua means unique element right me hoga
