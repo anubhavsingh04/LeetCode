@@ -2,7 +2,7 @@ class Solution {
 public:
     void rec(int idx,vector<int>&nums,vector<vector<int>>&ans)
     {
-        if(idx==nums.size()) {
+        if(idx>=nums.size()){
             ans.push_back(nums);
             return;
         }
