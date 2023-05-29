@@ -1,1 +1,1 @@
-​
+khud ke sath swap kro ya next element ke sath
