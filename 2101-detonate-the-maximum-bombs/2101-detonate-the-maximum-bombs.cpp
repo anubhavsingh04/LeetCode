@@ -42,7 +42,7 @@ public:
                 if(vis[j]) cnt++;
             }
             ans=max(ans,cnt);
-            fill(vis.begin(),vis.end(),0);
+            vis=vector<int>(n,0);
         }
         return ans;
     }
