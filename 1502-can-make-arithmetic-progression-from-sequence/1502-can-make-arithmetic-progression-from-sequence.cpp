@@ -1,10 +1,22 @@
 class Solution {
 public:
     bool canMakeArithmeticProgression(vector<int>& arr) {
-        sort(arr.begin(),arr.end());
-        for(int i=1;i<arr.size()-1;i++)
+        int n=arr.size();
+        unordered_set<int>st;
+        int maxi=INT_MIN,mini=INT_MAX;
+        for(auto &i:arr)
         {
-            if(2*arr[i]!=(arr[i-1]+arr[i+1])) return false;
+            maxi=max(maxi,i);
+            mini=min(mini,i);
+            st.insert(i);
+        }
+        if((maxi-mini)%(n-1)!=0) return false;
+        int d=(maxi-mini)/(n-1);
+    
+        while(n--)
+        {
+            if(!st.count(mini)) return false;
+            mini+=d;
         }
         return true;
     }
