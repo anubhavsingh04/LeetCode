@@ -24,8 +24,7 @@ public:
         }
     }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        ListNode*dummy=new ListNode(0);
-        ListNode*ptr=dummy;
+        
         ListNode*head=NULL;
         for(int i=0;i<lists.size();i++){
             ListNode*root=mergetwo(lists[i],head);
