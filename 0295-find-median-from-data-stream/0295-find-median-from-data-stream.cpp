@@ -1,31 +1,43 @@
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-#define ordered_set tree<int, null_type,less_equal <int>, rb_tree_tag,tree_order_statistics_node_update>
-
 class MedianFinder {
 public:
-
-ordered_set s;
-MedianFinder() {
-    
-}
-
-void addNum(int num) 
-{
-   s.insert(num);
-}
-
-double findMedian() {
-    
-    int n=s.size();
-    if(n%2==0)
-    {
-        return (double)(*s.find_by_order(n/2)+*s.find_by_order(n/2-1))/2 ;
+    priority_queue<int>maxi;
+    priority_queue<int,vector<int>,greater<int>>mini;
+    MedianFinder() {
         
     }
-    return *s.find_by_order(n/2);
-}
+    
+    void addNum(int num) {
+        if(maxi.empty()||maxi.top()>num){
+            maxi.push(num);
+        }else {
+            mini.push(num);
+        }
+        
+        int n=maxi.size();
+        int m=mini.size();
+        if(n-m==2||n-m==-2)
+        {
+            if(n>m){
+                mini.push(maxi.top());
+                maxi.pop();
+            }
+            else {
+                maxi.push(mini.top());
+                mini.pop();
+            }
+        }
+    }
+    
+    double findMedian() {
+        int n=maxi.size();
+        int m=mini.size();
+        if((n+m)%2==0) {
+            return (maxi.top()+mini.top())/2.0;
+        }
+        else  {
+            return n>m?maxi.top():mini.top();
+        }
+    }
 };
 
 /**
