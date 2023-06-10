@@ -9,31 +9,20 @@ using namespace std;
 
 class Solution{   
 public:
+    bool rec(vector<int>&arr,int n,int sum,vector<vector<int>>&dp)
+    {
+        if(sum==0) return 1;
+        if(n==0) return arr[0]==sum;
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        int notpick=rec(arr,n-1,sum,dp);
+        int pick=0;
+        if(arr[n]<=sum) pick=rec(arr,n-1,sum-arr[n],dp);
+        return dp[n][sum]=pick||notpick;
+    }
     bool isSubsetSum(vector<int>arr, int sum){
         int n=arr.size();
-        int dp[n+1][sum+1];
-        for(int i=0;i<n+1;i++)
-        {
-            for(int j=0;j<sum+1;j++)
-            {
-                if(i==0 && j==0) dp[i][j]=true;
-                else if(i==0) // arr size is 0 we cant make any sum
-                dp[i][j]=false;
-                else if(j==0) // sum is 0 take empty subset 
-                dp[i][j]=true;
-            }
-        }
-        for(int i=1;i<n+1;i++)
-        {
-            for(int j=1;j<sum+1;j++)
-            {
-                if(arr[i-1]<=j) // take or not take 
-                dp[i][j]=(dp[i-1][j-arr[i-1]]||dp[i-1][j]);
-                else 
-                dp[i][j]=dp[i-1][j];
-            }
-        }
-        return dp[n][sum];
+        vector<vector<int>>dp(n+1,vector<int>(sum+1,-1));
+        return rec(arr,n-1,sum,dp);
     }
 };
 
