@@ -1,6 +1,6 @@
 # Minimum sum partition
 ## Hard
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array&nbsp;<strong>arr</strong> of size <strong>n&nbsp;</strong>containing <strong>non-negative </strong>integers, the task is to divide it into two sets S1 and S2 such that the absolute difference between their sums is minimum and find the <strong>minimum</strong> difference</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array&nbsp;<strong>arr</strong> of size <strong>n&nbsp;</strong>containing <strong>non-negative </strong>integers, the task is to divide it into two sets <strong>S1</strong> and <strong>S2</strong> such that the absolute difference between their sums is minimum and find the <strong>minimum</strong> difference</span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
