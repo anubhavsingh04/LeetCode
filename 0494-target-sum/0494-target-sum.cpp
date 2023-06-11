@@ -1,34 +1,27 @@
 class Solution {
 public:
+    int rec(int i,vector<int>&nums,int target,vector<vector<int>>&dp)
+    {
+        if(i==0) {
+            if(nums[0]==0 && target==0) return 2;
+            if(target==0 || nums[0]==target) return 1;
+            return 0;
+        }
+        if(dp[i][target]!=-1)return dp[i][target];
+        int notpick=rec(i-1,nums,target,dp);
+        int pick=0;
+        if(nums[i]<=target){
+            pick=rec(i-1,nums,target-nums[i],dp);
+        }
+        return dp[i][target]=pick+notpick;
+    }
     int findTargetSumWays(vector<int>& nums, int target) {
+        int n=nums.size();
         target=abs(target);
         int total=accumulate(nums.begin(),nums.end(),0);
-        
-        if(target>total||(target+total)%2==1) return 0;
-        int sum=(total+target)/2;
-        int n=nums.size();
-        vector<vector<int>>dp(n+1,vector<int>(sum+1,0));
-        // for(int i=0;i<n+1;i++)
-        // {
-        //     for(int j=0;j<sum+1;j++)
-        //     {
-        //         if(i==0 && j==0) dp[i][j]=1;
-        //         else if(j==0) dp[i][j]=1;
-        //         else if(i==0) dp[i][j]=0;
-        //     }
-        // }
-        for(int i=0;i<n+1;i++)
-        {
-            dp[i][0]=1;
-        }
-        for(int i=1;i<n+1;i++)
-        {
-            for(int j=0;j<sum+1;j++)
-            {
-                if(nums[i-1]<=j) dp[i][j]=(dp[i-1][j-nums[i-1]]+dp[i-1][j]);
-                    else dp[i][j]=dp[i-1][j];
-            }
-        }
-        return dp[n][sum];
+        if(total+target<0||(total+target)%2==1) return 0;
+        target=(total+target)/2;
+        vector<vector<int>>dp(n,vector<int>(target+1,-1));
+        return rec(n-1,nums,target,dp);
     }
 };
