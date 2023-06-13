@@ -1,17 +1,22 @@
 class Solution {
 public:
     int equalPairs(vector<vector<int>>& grid) {
-        map<vector<int>,int>mp;
-        for(int i=0;i<grid.size();i++) mp[grid[i]]++;
+        int n=grid.size();
         int ans=0;
-        for(int j=0;j<grid[0].size();j++)
+        for(int row=0;row<n;row++)
         {
-            vector<int>v;
-            for(int i=0;i<grid.size();i++)
+            for(int col=0;col<n;col++)
             {
-                v.push_back(grid[i][j]);
+                bool flag=true;
+                for(int k=0;k<n;k++)
+                {
+                    if(grid[row][k]!=grid[k][col]){
+                        flag=false;
+                        break;
+                    }
+                }
+                if(flag) ans++;
             }
-            ans+=mp[v];
         }
         return ans;
     }
