@@ -1,1 +1,1 @@
-​
+this problem is same as buy and sell stock II sligh change is that whenever we are selling we have to bu again for second day so i+1 will be changed to i+2 in buy case
