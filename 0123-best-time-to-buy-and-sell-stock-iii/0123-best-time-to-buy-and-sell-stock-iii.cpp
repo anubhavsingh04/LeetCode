@@ -13,7 +13,7 @@ public:
         }
         for(int buy=0;buy<=1;buy++)
         {
-            for(trans=0;trans<2;trans++)
+            for(int trans=0;trans<=2;trans++)
             {
                 dp[n][buy][trans]=0;
             }
