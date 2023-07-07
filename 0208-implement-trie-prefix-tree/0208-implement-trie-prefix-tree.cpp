@@ -1,51 +1,53 @@
 class TrieNode{
-  public:
-    vector<TrieNode*> dict;
+    public:
+    vector<TrieNode*>links;
     bool isEnd;
     TrieNode(){
-        isEnd = false;
-        dict.resize(26, nullptr);
+        links.resize(26,NULL);
+        isEnd=false;
+    }
+    bool containskey(char ch){
+        return links[ch-'a']!=NULL;
+    }
+    TrieNode* get(char ch){
+        return links[ch-'a'];
     }
 };
 class Trie {
 public:
-    TrieNode* root;
-    
-    /** Initialize your data structure here. */
+    TrieNode*root;
     Trie() {
-        root = new TrieNode();
+        root=new TrieNode();
     }
     
-    /** Inserts a word into the trie. */
-    void insert(string s) {
-        TrieNode* node = root;
-        for(int i=0;i<s.length();i++){
-            if(node->dict[s[i]-'a']==nullptr){
-                node->dict[s[i]-'a'] = new TrieNode();
+    void insert(string word) {
+        TrieNode*node=root;
+        for(int i=0;i<word.size();i++)
+        {
+            if(!node->containskey(word[i])){
+                node->links[word[i]-'a']=new TrieNode();
             }
-            node = node->dict[s[i]-'a'];
+            node=node->get(word[i]);
         }
-        node->isEnd = true;
+        node->isEnd=true;
     }
     
-    /** Returns if the word is in the trie. */
-    bool search(string s) {
-        TrieNode* node = root;
-        for(int i=0;i<s.length();i++){
-            if(node->dict[s[i]-'a']==nullptr)
-                return false;
-            node = node->dict[s[i]-'a'];
+    bool search(string word) {
+        TrieNode*node=root;
+        for(int i=0;i<word.size();i++)
+        {
+            if(!node->containskey(word[i])) return false;
+            node=node->get(word[i]);
         }
         return node->isEnd;
     }
     
-    /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(string s) {
-        TrieNode* node = root;
-        for(int i=0;i<s.length();i++){
-            if(node->dict[s[i]-'a']==nullptr)
-                return false;
-            node = node->dict[s[i]-'a'];
+    bool startsWith(string prefix) {
+        TrieNode*node=root;
+        for(int i=0;i<prefix.size();i++)
+        {
+            if(!node->containskey(prefix[i])) return false;
+            node=node->get(prefix[i]);
         }
         return true;
     }
