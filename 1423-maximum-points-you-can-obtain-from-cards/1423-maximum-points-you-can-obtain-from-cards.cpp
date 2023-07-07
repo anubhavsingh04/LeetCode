@@ -9,7 +9,7 @@ public:
         while(right<n)
         {
             sum+=nums[right++];
-            if(right-left==windowsz)
+            if(right-left>=windowsz)
             {
                 ans=min(ans,sum);
                 sum-=nums[left++];
