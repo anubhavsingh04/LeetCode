@@ -6,12 +6,12 @@ class TrieNode{
         links.resize(26,NULL);
         isEnd=false;
     }
-    bool containskey(char ch){
-        return links[ch-'a']!=NULL;
-    }
-    TrieNode* get(char ch){
-        return links[ch-'a'];
-    }
+    // bool containskey(char ch){
+    //     return links[ch-'a']!=NULL;
+    // }
+    // TrieNode* get(char ch){
+    //     return links[ch-'a'];
+    // }
 };
 class Trie {
 public:
@@ -24,10 +24,10 @@ public:
         TrieNode*node=root;
         for(int i=0;i<word.size();i++)
         {
-            if(!node->containskey(word[i])){
+            if(node->links[word[i]-'a']==NULL){
                 node->links[word[i]-'a']=new TrieNode();
             }
-            node=node->get(word[i]);
+            node=node->links[word[i]-'a'];
         }
         node->isEnd=true;
     }
@@ -36,8 +36,8 @@ public:
         TrieNode*node=root;
         for(int i=0;i<word.size();i++)
         {
-            if(!node->containskey(word[i])) return false;
-            node=node->get(word[i]);
+            if(!node->links[word[i]-'a']) return false;
+            node=node->links[word[i]-'a'];
         }
         return node->isEnd;
     }
@@ -46,8 +46,8 @@ public:
         TrieNode*node=root;
         for(int i=0;i<prefix.size();i++)
         {
-            if(!node->containskey(prefix[i])) return false;
-            node=node->get(prefix[i]);
+            if(!node->links[prefix[i]-'a']) return false;
+            node=node->links[prefix[i]-'a'];
         }
         return true;
     }
