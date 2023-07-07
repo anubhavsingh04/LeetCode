@@ -16,7 +16,7 @@ public:
                 ans=min(ans,sum);
                 // sum+=nums[right];
                 sum-=nums[left++];
-                cout<<sum<<endl;
+                // cout<<sum<<endl;
             }
         }
         
