@@ -6,12 +6,13 @@ public:
         
         int n=nums.size();
         int windowsz=n-k;
-        if(k==n) return total;
+        // if(k==n) return total;
         while(right<n)
         {
             sum+=nums[right++];
-            if(right-left>=windowsz)
+            if(right-left==windowsz)
             {
+                // cout<<'*'<<endl;
                 // cout<<sum<<endl;
                 ans=min(ans,sum);
                 // sum+=nums[right];
@@ -20,6 +21,6 @@ public:
             }
         }
         
-        return total-ans;
+        return ans==1e9?total:total-ans;
     }
 };
