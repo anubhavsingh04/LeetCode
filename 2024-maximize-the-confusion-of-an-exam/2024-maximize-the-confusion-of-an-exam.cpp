@@ -1,22 +1,31 @@
 class Solution {
 public:
-    int solve(string s,int k,char ch)
-    {
-        int left=0,right=0,ans=0,count=0;
+    
+    int maxConsecutiveAnswers(string s, int k) {
+        int ansT=0,ansF=0,countT=0,countF=0,n=s.size();
+        int left=0,right=0;
         while(right<s.size())
         {
-            if(s[right]==ch) count++; // this is invalid character count which is at max k allowed 
-            if(left<s.size() && count>k){ 
-                if(s[left]==ch) count--;
+            if(s[right]=='F') countF++; // this is invalid character count which is at max k allowed 
+            if(left<s.size() && countF>k){ 
+                if(s[left]=='F') countF--;
                 left++;
             }
-            ans=max(ans,right-left+1);
+            ansF=max(ansF,right-left+1);
             right++;
         }
-        return ans;
-    }
-    int maxConsecutiveAnswers(string answerKey, int k) {
-        return max(solve(answerKey,k,'T'),solve(answerKey,k,'F'));
-                        // max False         max True
+        
+        left=0,right=0;
+        while(right<s.size())
+        {
+            if(s[right]=='T') countT++; // this is invalid character count which is at max k allowed 
+            if(left<s.size() && countT>k){ 
+                if(s[left]=='T') countT--;
+                left++;
+            }
+            ansT=max(ansT,right-left+1);
+            right++;
+        }
+        return max(ansT,ansF);
     }
 };
