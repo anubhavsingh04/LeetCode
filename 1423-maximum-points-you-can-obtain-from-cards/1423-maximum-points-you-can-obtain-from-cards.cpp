@@ -1,21 +1,21 @@
 class Solution {
 public:
-    int maxScore(vector<int>& cardPoints, int k) {
-        int res = 0;
-		
-		//First k elements in our window
-        for(int i=0;i<k;i++) res+=cardPoints[i];
-        
-        int curr=res;
-        for(int i=k-1;i>=0;i--) {
-			//We remove the last visited element and add the non-visited element from the last
-            curr-=cardPoints[i];
-            curr+=cardPoints[cardPoints.size()-k+i];
-			
-            //We check the maximum value any possible combination can give
-			res = max(res, curr);
+    int maxScore(vector<int>& nums, int k) {
+        int left=0,right=0,sum=0,ans=1e9;
+        int total=accumulate(nums.begin(),nums.end(),0); 
+        int n=nums.size();
+        int windowsz=n-k;
+        while(right<windowsz)
+        {
+            sum+=nums[right++];
         }
-        
-        return res;
+        while(right<n)
+        {
+            ans=min(ans,sum);
+            sum+=nums[right++];
+            sum-=nums[left++];
+        }
+        ans=min(ans,sum);
+        return total-ans;
     }
 };
