@@ -1,33 +1,30 @@
 class Solution {
 public:
-    vector<vector<int>>dp;
-    vector<vector<int>>dp2;
     bool ispalindrome(string &s,int i,int j)
     {
-        if(i>=j) return true;
-        if(dp2[i][j]!=-1) return dp2[i][j];
-        if(s[i]==s[j]) return dp2[i][j]=ispalindrome(s,i+1,j-1);
-        return dp2[i][j]=false;
+        while(i<j)
+        {
+            if(s[i++]!=s[j--]) return false;
+        }
+        return true;
     }
-    int solve(string s,int i,int j)
+    int rec(int i,int j,string &s,vector<int>&dp)
     {
-        if(i>=j) return dp[i][j]=0;
-        if(ispalindrome(s,i,j)) return dp[i][j]=0;
-        if(dp[i][j]!=-1) return dp[i][j];
-        int ans=INT_MAX;
+        if(i>=j || ispalindrome(s,i,j)) return 0;
+        if(dp[i]!=-1) return dp[i];
+        int mini=INT_MAX;
         for(int k=i;k<j;k++)
         {
             if(ispalindrome(s,i,k)){
-                int tmpans=1+solve(s,k+1,j);
-                ans=min(ans,tmpans);
+                int cost=1+rec(k+1,j,s,dp);
+                mini=min(mini,cost);
             }
-        } 
-        return dp[i][j]=ans;
+        }
+        return dp[i]=mini;
     }
     int minCut(string s) {
         int n=s.size();
-        dp.resize(n+1,vector<int>(n+1,-1));
-        dp2.resize(n+1,vector<int>(n+1,-1));
-        return solve(s,0,n-1);
+        vector<int>dp(n+1,-1);
+        return rec(0,n-1,s,dp);
     }
 };
