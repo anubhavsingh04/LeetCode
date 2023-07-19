@@ -1,27 +1,26 @@
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& nums) {
-        int cnt=0,i=1,j=0;
+        int cnt=0,left=0,right=1,n=nums.size();
         sort(nums.begin(),nums.end());
-        vector<vector<int>>ans;
-        ans.push_back(nums[0]);
-        while(i<nums.size())
+        // vector<vector<int>>ans;
+        // ans.push_back(nums[0]);
+        while(right<n)
         {
-            if(nums[i][0]>=ans[j][1]) // not overlapped 
+            if(nums[right][0]>=nums[left][1]) // not overlapped 
             {
-                ans.push_back(nums[i]);
-                j++;
+                left=right;
             }
-            else if(nums[i][1]>=ans[j][1])
+            else if(nums[right][1]>=nums[left][1])
             {
                 cnt++;
             }
-            else if(nums[i][1]<ans[j][1])
+            else if(nums[right][1]<nums[left][1])
             {
-                ans[j][1]=nums[i][1];
+                left=right;
                 cnt++;
             }
-            i++;
+            right++;
         }
         return cnt;
     }
