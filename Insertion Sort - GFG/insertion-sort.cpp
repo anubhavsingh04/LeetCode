@@ -17,14 +17,13 @@ void printArray(int arr[], int size)
 class Solution
 {
     public:
-    void insert(int arr[], int i)
+    void insert(int nums[], int i)
     {
         int j=i;
-        while(j>0 && arr[j]<arr[j-1])
-        {
-            int tmp=arr[j];
-            arr[j]=arr[j-1];
-            arr[j-1]=tmp;
+        while(j>0 && nums[j]<nums[j-1]){
+            int tmp=nums[j];
+            nums[j]=nums[j-1];
+            nums[j-1]=tmp;
             j--;
         }
     }
