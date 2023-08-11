@@ -27,18 +27,18 @@ class Solution
     }
     
     public:
-    int partition (int arr[], int low, int high)
+    int partition(int nums[],int start,int end)
     {
-       int pivot=arr[low];
-       int i=low,j=high;
-       while(i<j)
-       {
-           while(i<high && arr[i]<=pivot ) i++;
-           while(j>low && arr[j]>pivot ) j--;
-           if(i<j) swap(arr[i],arr[j]);
-       }
-       swap(arr[low],arr[j]);
-       return j;
+        int pivot=nums[start];
+        int l=start,r=end;
+        while(l<r)
+        {
+            while(l<end && nums[l]<=pivot) l++;
+            while(r>start && nums[r]>pivot) r--;
+            if(l<r) swap(nums[l],nums[r]);
+        }
+        swap(nums[start],nums[r]);
+        return r;
     }
 };
 
