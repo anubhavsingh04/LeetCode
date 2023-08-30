@@ -111,28 +111,31 @@ struct Node{
 
 /*  Function which returns the  root of 
     the flattened linked list. */
-    Node* mergeTwoLists(Node* l1, Node* l2) {
-        if(!l1) return l2;
-        if(!l2) return l1;
-        if(l1->data<=l2->data) {
-            l1->bottom=mergeTwoLists(l1->bottom,l2);
-            return l1;
-        }
-        else 
+    Node* mergetwosorted(Node*l1,Node*l2)
+    {
+        Node*dummy=new Node(-1);
+        Node*ptr=dummy;
+        while(l1 && l2)
         {
-            l2->bottom=mergeTwoLists(l1,l2->bottom);
-            return l2;
+            if(l1->data<l2->data){
+                ptr->bottom=l1;
+                l1=l1->bottom;
+            }
+            else {
+                ptr->bottom=l2;
+                l2=l2->bottom;
+            }
+            ptr=ptr->bottom;
         }
+        if(l1) ptr->bottom=l1;
+        else ptr->bottom=l2;
+        return dummy->bottom;
     }
-Node *flatten(Node *root)
-{
-   if(!root||!root->next) return root;
-   Node*r1=root,*r2=root->next;
-   while(r2)
-   {
-       r1=mergeTwoLists(r1,r2);
-       r2=r2->next;
-   }
-   return r1;
-}
+    Node *flatten(Node *root)
+    {
+        if(!root|| !root->next) return root;
+       root->next=flatten(root->next);
+       root=mergetwosorted(root,root->next);
+       return root;
+    }
 
