@@ -1,80 +1,41 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	// Using dfs
-// 	void dfs(int src,vector<int>&vis,stack<int>&st,vector<int>adj[])
-// 	{
-// 	    vis[src]=1;
-// 	    for(auto &i:adj[src])
-// 	    {
-// 	        if(!vis[i])
-// 	        {
-// 	            dfs(i,vis,st,adj);
-// 	        }
-// 	    }
-// 	    st.push(src);
-// 	}
-
-// 	vector<int> topoSort(int V, vector<int> adj[]) 
-// 	{
-// 	    vector<int>vis(V,0);
-// 	    stack<int>st;
-// 	    for(int i=0;i<V;i++)
-// 	    {
-// 	        if(!vis[i])
-// 	        {
-// 	            dfs(i,vis,st,adj);
-// 	        }
-// 	    }
-// 	    vector<int>ans;
-// 	    while(!st.empty())
-// 	    {
-// 	        ans.push_back(st.top());
-// 	        st.pop();
-// 	    }
-// 	    return ans;
-// 	}
-
-    vector<int> topoSort(int V, vector<int> adj[]) 
-	{
-	    vector<int>indegree(V,0);
-	    for(int x=0;x<V;x++)
-	    {
-	        for(auto &i:adj[x])
-	        {
-	            indegree[i]++;
-	        }
+	void dfs(int src,vector<int>&vis,vector<int>adj[],stack<int>&st){
+	    vis[src]=1;
+	    for(auto &i:adj[src]){
+	       if(!vis[i]){
+	           dfs(i,vis,adj,st);
+	       }
 	    }
-	    queue<int>q;
+	    st.push(src);
+	}
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    vector<int>vis(V+1,0);
+	    stack<int>st;
+	    vector<int>ans;
 	    for(int i=0;i<V;i++)
 	    {
-	        if(indegree[i]==0)
-	        q.push(i);
-	    }
-	    vector<int>topo;
-	    while(!q.empty())
-	    {
-	        int curr=q.front();
-	        q.pop();
-	        topo.push_back(curr);
-	        for(auto &i:adj[curr])
-	        {
-	            indegree[i]--;
-	            if(indegree[i]==0)
-	            q.push(i);
+	        if(!vis[i]){
+	            dfs(i,vis,adj,st);
 	        }
 	    }
-	    return topo;
+	    while(!st.empty()){
+	        ans.push_back(st.top());
+	        st.pop();
+	    }
+	    return ans;
 	}
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 /*  Function to check if elements returned by user
 *   contains the elements in topological sorted form
@@ -121,4 +82,5 @@ int main() {
     }
     
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
