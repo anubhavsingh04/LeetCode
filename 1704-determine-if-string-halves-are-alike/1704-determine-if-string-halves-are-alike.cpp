@@ -1,15 +1,20 @@
 class Solution {
 public:
     bool halvesAreAlike(string s) {
-        int cnt=0,len=s.size();
-        unordered_set<char>st={'a','A','e','E','i','I','o','O','u','U'};
-        for(int i=0;i<len;i++){
-            if(st.count(s[i]))
+        string str="aeiouAEIOU";
+        set<char>st(str.begin(),str.end());
+        int n=s.size();
+        int a=0,b=0;
+        for(int i=0;i<n;i++)
+        {
+            if(i<n/2)
             {
-                if(i<len/2) cnt++;
-                else cnt--;
+                if(st.count(s[i])) a++;
+            }
+            else {
+                if(st.count(s[i])) b++;
             }
         }
-        return cnt==0;
+        return a==b;
     }
 };
