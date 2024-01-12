@@ -7,12 +7,9 @@ public:
         int a=0,b=0;
         for(int i=0;i<n;i++)
         {
-            if(i<n/2)
-            {
-                if(st.count(s[i])) a++;
-            }
-            else {
-                if(st.count(s[i])) b++;
+            if(st.count(s[i])){
+                if(i<n/2) a++;
+                else b++;
             }
         }
         return a==b;
