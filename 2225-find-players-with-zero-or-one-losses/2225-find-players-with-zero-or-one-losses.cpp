@@ -2,11 +2,12 @@ class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
         map<int,pair<int,int>>mp;
+        int win=0,lose=0;
         for(auto i:matches)
         {
             int a=i[0];
             int b=i[1];
-            int win=1,lose=0;
+            win=1,lose=0;
             if(mp.count(a)){
                 auto p=mp[a];
                 win+=p.first;
