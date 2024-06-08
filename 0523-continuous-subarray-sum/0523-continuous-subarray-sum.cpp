@@ -17,7 +17,6 @@ public:
             prefsum+=nums[i];
             if(i>0 && prefsum%k==0) return true;
             prefsum=prefsum%k;
-            // if we are again getting prefsum%k means from prev index to curr idx sum%k==0
             if(mp.find(prefsum)!=mp.end())  
             {
                 if(i-mp[prefsum]>1) return true;
