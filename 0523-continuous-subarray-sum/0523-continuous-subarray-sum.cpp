@@ -21,7 +21,7 @@ public:
             {
                 if(i-mp[prefsum]>1) return true;
             }
-            else 
+            else // agar map me sum nahi milta hai tabhi update karna hai
             {
                 mp[prefsum]=i;
             }
