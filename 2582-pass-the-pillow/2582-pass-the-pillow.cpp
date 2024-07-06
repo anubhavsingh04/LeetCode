@@ -1,14 +1,12 @@
 class Solution {
 public:
-    int passThePillow(int n, int t) {
-        int round=t/(n-1);
-        int reach=t%(n-1);
-        if(round%2==0) {
-            return reach+1;
+    int passThePillow(int n, int time) {
+        if(time<=(n-1)) return time+1;
+        int rem=time/(n-1);
+        int x=time%(n-1);
+        if(rem%2==0){
+            return x+1;
         }
-        else 
-        {
-            return n-reach;
-        }
+        return n-x;
     }
 };
