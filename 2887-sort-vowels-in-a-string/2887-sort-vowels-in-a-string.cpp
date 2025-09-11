@@ -1,24 +1,19 @@
 class Solution {
 public:
     string sortVowels(string s) {
-        string str="aeiouAEIOU";
-        set<char>st(str.begin(),str.end());
-        string word="";
-        for(int i=0;i<s.size();i++)
-        {
-            if(st.count(s[i])) word+=s[i];
+        string vowels="aeiouAEIOU";
+        unordered_set<char>st(vowels.begin(),vowels.end());
+        string tmp="";
+        for(auto i:s){
+            if(st.count(i)) tmp+=i;
         }
-        string t=s;
-        sort(word.begin(),word.end());
+        sort(tmp.begin(),tmp.end());
         int j=0;
-        for(int i=0;i<s.size();i++)
-        {
-            if(st.count(t[i]))
-            {
-                t[i]=word[j];
-                j++;
+        for(int i=0;i<s.size();i++){
+            if(st.count(s[i])){
+                s[i]=tmp[j++];
             }
         }
-        return t;
+        return s;
     }
 };
