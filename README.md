@@ -14,6 +14,7 @@
 ## String
 |  |
 | ------- |
+| [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
 | [2887-sort-vowels-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/2887-sort-vowels-in-a-string) |
 | [3462-vowels-game-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/3462-vowels-game-in-a-string) |
 | [3872-find-most-frequent-vowel-and-consonant](https://github.com/anubhavsingh04/LeetCode/tree/master/3872-find-most-frequent-vowel-and-consonant) |
@@ -36,9 +37,14 @@
 ## Hash Table
 |  |
 | ------- |
+| [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
 | [3872-find-most-frequent-vowel-and-consonant](https://github.com/anubhavsingh04/LeetCode/tree/master/3872-find-most-frequent-vowel-and-consonant) |
 ## Counting
 |  |
 | ------- |
 | [3872-find-most-frequent-vowel-and-consonant](https://github.com/anubhavsingh04/LeetCode/tree/master/3872-find-most-frequent-vowel-and-consonant) |
+## Array
+|  |
+| ------- |
+| [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
 <!---LeetCode Topics End-->
