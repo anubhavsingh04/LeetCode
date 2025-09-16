@@ -26,6 +26,7 @@
 ## Math
 |  |
 | ------- |
+| [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
 | [3462-vowels-game-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/3462-vowels-game-in-a-string) |
 ## Brainteaser
 |  |
@@ -49,4 +50,13 @@
 |  |
 | ------- |
 | [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
+| [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
+## Stack
+|  |
+| ------- |
+| [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
+## Number Theory
+|  |
+| ------- |
+| [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
 <!---LeetCode Topics End-->
