@@ -9,31 +9,23 @@ class TaskManager {
 private:
     struct Task {
         int userId, taskId, priority;
-
-        // Default constructor
         Task() : userId(0), taskId(0), priority(0) {}
 
-        // Parameterized constructor
         Task(int userId, int taskId, int priority)
             : userId(userId), taskId(taskId), priority(priority) {}
 
-        // Define the comparison operator to maintain the correct order in the sorted container
         bool operator<(const Task& other) const {
             if (priority != other.priority) {
-                return priority > other.priority; // Higher priority comes first
+                return priority > other.priority; 
             }
-            return taskId > other.taskId; // If priority is the same, higher taskId comes first
+            return taskId > other.taskId; 
         }
 
-        // Define the copy constructor
         Task(const Task& other) = default;
-        // Define the move constructor
         Task(Task&& other) noexcept = default;
 
-        // Define the copy assignment operator
         Task& operator=(const Task& other) = default;
 
-        // Define the move assignment operator
         Task& operator=(Task&& other) noexcept = default;
     };
 
