@@ -31,6 +31,7 @@
 | ------- |
 | [0166-fraction-to-recurring-decimal](https://github.com/anubhavsingh04/LeetCode/tree/master/0166-fraction-to-recurring-decimal) |
 | [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
+| [3279-alice-and-bob-playing-flower-game](https://github.com/anubhavsingh04/LeetCode/tree/master/3279-alice-and-bob-playing-flower-game) |
 | [3462-vowels-game-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/3462-vowels-game-in-a-string) |
 ## Brainteaser
 |  |
