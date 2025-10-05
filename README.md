@@ -60,6 +60,7 @@
 ## Array
 |  |
 | ------- |
+| [0417-pacific-atlantic-water-flow](https://github.com/anubhavsingh04/LeetCode/tree/master/0417-pacific-atlantic-water-flow) |
 | [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
 | [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
 | [2429-design-a-food-rating-system](https://github.com/anubhavsingh04/LeetCode/tree/master/2429-design-a-food-rating-system) |
@@ -92,5 +93,14 @@
 ## Matrix
 |  |
 | ------- |
+| [0417-pacific-atlantic-water-flow](https://github.com/anubhavsingh04/LeetCode/tree/master/0417-pacific-atlantic-water-flow) |
 | [3797-design-spreadsheet](https://github.com/anubhavsingh04/LeetCode/tree/master/3797-design-spreadsheet) |
+## Depth-First Search
+|  |
+| ------- |
+| [0417-pacific-atlantic-water-flow](https://github.com/anubhavsingh04/LeetCode/tree/master/0417-pacific-atlantic-water-flow) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0417-pacific-atlantic-water-flow](https://github.com/anubhavsingh04/LeetCode/tree/master/0417-pacific-atlantic-water-flow) |
 <!---LeetCode Topics End-->
