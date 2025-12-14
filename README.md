@@ -7,6 +7,7 @@
 |  |
 | ------- |
 | [2028-the-earliest-and-latest-rounds-where-players-compete](https://github.com/anubhavsingh04/LeetCode/tree/master/2028-the-earliest-and-latest-rounds-where-players-compete) |
+| [2147-number-of-ways-to-divide-a-long-corridor](https://github.com/anubhavsingh04/LeetCode/tree/master/2147-number-of-ways-to-divide-a-long-corridor) |
 ## Memoization
 |  |
 | ------- |
@@ -17,6 +18,7 @@
 | [0166-fraction-to-recurring-decimal](https://github.com/anubhavsingh04/LeetCode/tree/master/0166-fraction-to-recurring-decimal) |
 | [1006-vowel-spellchecker](https://github.com/anubhavsingh04/LeetCode/tree/master/1006-vowel-spellchecker) |
 | [1264-maximum-number-of-words-you-can-type](https://github.com/anubhavsingh04/LeetCode/tree/master/1264-maximum-number-of-words-you-can-type) |
+| [2147-number-of-ways-to-divide-a-long-corridor](https://github.com/anubhavsingh04/LeetCode/tree/master/2147-number-of-ways-to-divide-a-long-corridor) |
 | [2429-design-a-food-rating-system](https://github.com/anubhavsingh04/LeetCode/tree/master/2429-design-a-food-rating-system) |
 | [2887-sort-vowels-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/2887-sort-vowels-in-a-string) |
 | [3462-vowels-game-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/3462-vowels-game-in-a-string) |
@@ -30,6 +32,7 @@
 |  |
 | ------- |
 | [0166-fraction-to-recurring-decimal](https://github.com/anubhavsingh04/LeetCode/tree/master/0166-fraction-to-recurring-decimal) |
+| [2147-number-of-ways-to-divide-a-long-corridor](https://github.com/anubhavsingh04/LeetCode/tree/master/2147-number-of-ways-to-divide-a-long-corridor) |
 | [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
 | [3279-alice-and-bob-playing-flower-game](https://github.com/anubhavsingh04/LeetCode/tree/master/3279-alice-and-bob-playing-flower-game) |
 | [3462-vowels-game-in-a-string](https://github.com/anubhavsingh04/LeetCode/tree/master/3462-vowels-game-in-a-string) |
