@@ -8,6 +8,7 @@
 | ------- |
 | [2028-the-earliest-and-latest-rounds-where-players-compete](https://github.com/anubhavsingh04/LeetCode/tree/master/2028-the-earliest-and-latest-rounds-where-players-compete) |
 | [2147-number-of-ways-to-divide-a-long-corridor](https://github.com/anubhavsingh04/LeetCode/tree/master/2147-number-of-ways-to-divide-a-long-corridor) |
+| [3573-best-time-to-buy-and-sell-stock-v](https://github.com/anubhavsingh04/LeetCode/tree/master/3573-best-time-to-buy-and-sell-stock-v) |
 ## Memoization
 |  |
 | ------- |
@@ -68,6 +69,7 @@
 | [2307-replace-non-coprime-numbers-in-array](https://github.com/anubhavsingh04/LeetCode/tree/master/2307-replace-non-coprime-numbers-in-array) |
 | [2429-design-a-food-rating-system](https://github.com/anubhavsingh04/LeetCode/tree/master/2429-design-a-food-rating-system) |
 | [3242-count-elements-with-maximum-frequency](https://github.com/anubhavsingh04/LeetCode/tree/master/3242-count-elements-with-maximum-frequency) |
+| [3573-best-time-to-buy-and-sell-stock-v](https://github.com/anubhavsingh04/LeetCode/tree/master/3573-best-time-to-buy-and-sell-stock-v) |
 | [3797-design-spreadsheet](https://github.com/anubhavsingh04/LeetCode/tree/master/3797-design-spreadsheet) |
 ## Stack
 |  |
